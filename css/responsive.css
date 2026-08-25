@@ -464,7 +464,83 @@
   }
 
   .sim-view-panel {
-    padding: 16px;
+    padding: 12px !important;
+  }
+
+  /* WhatsApp Simulator Mobile Polish */
+  .wa-simulator-container {
+    height: 480px !important;
+    border-radius: 16px !important;
+  }
+
+  .wa-chat-header {
+    padding: 10px 12px !important;
+  }
+
+  .wa-avatar-wrap {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 17px !important;
+  }
+
+  .wa-contact-name {
+    font-size: 13.5px !important;
+  }
+
+  .wa-contact-status {
+    font-size: 10.5px !important;
+  }
+
+  .wa-badge-tech {
+    font-size: 9.5px !important;
+    padding: 3px 7px !important;
+  }
+
+  .wa-messages-area {
+    padding: 12px 10px !important;
+    gap: 8px !important;
+  }
+
+  .wa-bubble {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    max-width: 88% !important;
+  }
+
+  .wa-quick-chips {
+    padding: 6px 10px !important;
+    gap: 6px !important;
+  }
+
+  .wa-chip-btn {
+    padding: 5px 11px !important;
+    font-size: 11px !important;
+  }
+
+  .wa-input-bar {
+    padding: 6px 8px !important;
+    gap: 6px !important;
+  }
+
+  .wa-input-wrapper {
+    padding: 3px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .wa-text-input {
+    font-size: 12px !important;
+    padding: 6px 0 !important;
+  }
+
+  .wa-send-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+
+  .wa-send-btn svg {
+    width: 15px !important;
+    height: 15px !important;
   }
 
   /* Floating WhatsApp on Mobile */

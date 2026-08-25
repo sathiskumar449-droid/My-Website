@@ -368,37 +368,55 @@ window.printReceipt = function() {
 };
 
 /* --------------------------------------------------------------------------
-   WhatsApp AI Chatbot Simulation
+   WhatsApp AI Chatbot Simulation Engine
    -------------------------------------------------------------------------- */
+const WA_RESPONSES = {
+  'hi': "👋 Hello! Welcome to NexaVerse Studio. How can we elevate your business today?",
+  'hello': "👋 Hey there! Welcome to NexaVerse Studio. Feel free to explore our services or ask for pricing!",
+  'price': "💰 **Project Estimates:**\n• Modern Websites: ₹15,000 - ₹35,000\n• POS & GST Billing: ₹24,000 - ₹55,000\n• ERP / Custom SaaS: ₹45,000+\n• WhatsApp AI Bot: ₹18,000\nWould you like a formal quote for your business?",
+  'pos': "🛒 **NexaVerse Smart POS:**\n• High-speed billing & thermal printing\n• Barcode scanning & live inventory\n• GST invoice generation with HSN codes\n• Works 100% offline & syncs to cloud!",
+  'web': "🌐 **Custom Web Development:**\n• Lightning-fast load times (< 0.8s)\n• SEO-optimized & mobile-first UI\n• E-commerce & secure payment gateways\n• Built on modern tech stack.",
+  'timeline': "⚡ **Delivery Timeline:**\n• Landing Pages: 2 - 4 business days\n• Full Websites / POS: 1 - 2 weeks\n• Custom ERP / SaaS: 3 - 6 weeks\nWe offer milestone tracking & daily progress updates!",
+  'whatsapp': "📱 **WhatsApp AI Commerce Bot:**\n• Automatic product catalog & ordering\n• Instant FAQ answering & lead capture\n• Payment links & order status alerts\n• Cloud API integration with your DB!",
+  'default': "🚀 Thanks for reaching out! Our software engineering team specializes in custom websites, POS billing systems, ERPs and WhatsApp AI automations. Would you like to connect directly on WhatsApp with our lead developer?"
+};
+
 function initWhatsAppBot() {
-  // Initialized on load
+  const container = document.getElementById('wa-messages-body');
+  if (!container) return;
+
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+  container.innerHTML = `
+    <div class="wa-bubble bot">
+      👋 Hello! Welcome to <strong>NexaVerse Software Studio</strong>. I am your AI Business Assistant.<br><br>
+      How can I assist your business growth today?
+      <span class="wa-bubble-time">${timeStr}</span>
+    </div>
+    <div class="wa-bubble bot">
+      💡 <em>Tip: Tap any quick suggestion chip below or type your questions!</em>
+      <span class="wa-bubble-time">${timeStr}</span>
+    </div>
+  `;
 }
 
-const WA_RESPONSES = {
-  'web': "🌐 Our custom web applications are built with modern full-stack architectures, sub-second edge rendering, and built-in SEO scoring 99+ on Google PageSpeed!",
-  'pos': "🛒 NexaVerse POS systems support touch-screen terminals, 1D/2D barcode scanners, offline transactions, and instantaneous 80mm thermal receipt printing.",
-  'erp': "📊 We engineer modular ERP & CRM portals with drag-and-drop Kanban pipelines, role-based access control, and automated billing synchronization.",
-  'quote': "💰 Web apps start from ₹15,000 and custom POS engines start at ₹28,000. Would you like to chat with our lead engineer on WhatsApp?",
-  'default': "🚀 Thanks for reaching out! Our full-stack engineering team can build your custom web app or POS system. Would you like a direct WhatsApp call?"
-};
-
-window.sendQuickReply = function(text) {
-  const input = document.getElementById('wa-user-input');
+window.sendQuickMessage = function(text) {
+  const input = document.getElementById('wa-chat-input');
   if (input) {
     input.value = text;
-    sendWaMessage();
+    executeWaMessage();
   }
 };
 
-window.handleWaEnter = function(e) {
-  if (e.key === 'Enter') {
-    sendWaMessage();
-  }
+window.handleWaChatSubmit = function(e) {
+  if (e) e.preventDefault();
+  executeWaMessage();
 };
 
-window.sendWaMessage = function() {
-  const input = document.getElementById('wa-user-input');
-  const container = document.getElementById('wa-messages');
+function executeWaMessage() {
+  const input = document.getElementById('wa-chat-input');
+  const container = document.getElementById('wa-messages-body');
   if (!input || !container || !input.value.trim()) return;
 
   const text = input.value.trim();
@@ -407,31 +425,57 @@ window.sendWaMessage = function() {
   const now = new Date();
   const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
-  // Append user bubble
+  // 1. Append User Message
   const userBubble = document.createElement('div');
   userBubble.className = 'wa-bubble user';
-  userBubble.innerHTML = `${text}<span class="wa-bubble-time">${timeStr}</span>`;
+  userBubble.innerHTML = `${escapeHtml(text)}<span class="wa-bubble-time">${timeStr} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34B7F1" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline><polyline points="20 11 12 19"></polyline></svg></span>`;
   container.appendChild(userBubble);
   container.scrollTop = container.scrollHeight;
 
-  // Generate automated bot reply
+  // 2. Show Typing Indicator
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'wa-typing-indicator';
+  typingIndicator.id = 'wa-typing-active';
+  typingIndicator.innerHTML = `
+    <span class="wa-typing-dot"></span>
+    <span class="wa-typing-dot"></span>
+    <span class="wa-typing-dot"></span>
+  `;
+  container.appendChild(typingIndicator);
+  container.scrollTop = container.scrollHeight;
+
+  // 3. Generate Smart Bot Response after brief delay
   setTimeout(() => {
+    const activeTyping = document.getElementById('wa-typing-active');
+    if (activeTyping) activeTyping.remove();
+
     let reply = WA_RESPONSES.default;
     const lower = text.toLowerCase();
-    if (lower.includes('web') || lower.includes('site') || lower.includes('portfolio')) {
-      reply = WA_RESPONSES.web;
-    } else if (lower.includes('pos') || lower.includes('bill') || lower.includes('receipt') || lower.includes('thermal')) {
+
+    if (lower.includes('price') || lower.includes('cost') || lower.includes('estimate') || lower.includes('quote') || lower.includes('rate')) {
+      reply = WA_RESPONSES.price;
+    } else if (lower.includes('pos') || lower.includes('bill') || lower.includes('gst') || lower.includes('receipt') || lower.includes('thermal') || lower.includes('retail')) {
       reply = WA_RESPONSES.pos;
-    } else if (lower.includes('erp') || lower.includes('crm') || lower.includes('pipeline')) {
-      reply = WA_RESPONSES.erp;
-    } else if (lower.includes('quote') || lower.includes('price') || lower.includes('cost') || lower.includes('estimate')) {
-      reply = WA_RESPONSES.quote;
+    } else if (lower.includes('web') || lower.includes('site') || lower.includes('portfolio') || lower.includes('app') || lower.includes('ecommerce')) {
+      reply = WA_RESPONSES.web;
+    } else if (lower.includes('time') || lower.includes('fast') || lower.includes('deliver') || lower.includes('duration') || lower.includes('day')) {
+      reply = WA_RESPONSES.timeline;
+    } else if (lower.includes('whats') || lower.includes('bot') || lower.includes('chat') || lower.includes('auto')) {
+      reply = WA_RESPONSES.whatsapp;
+    } else if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey') || lower.includes('vanakkam')) {
+      reply = WA_RESPONSES.hi;
     }
+
+    const formattedReply = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
     const botBubble = document.createElement('div');
     botBubble.className = 'wa-bubble bot';
-    botBubble.innerHTML = `${reply}<span class="wa-bubble-time">${timeStr}</span>`;
+    botBubble.innerHTML = `${formattedReply}<span class="wa-bubble-time">${timeStr}</span>`;
     container.appendChild(botBubble);
     container.scrollTop = container.scrollHeight;
-  }, 450);
-};
+  }, 500);
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}

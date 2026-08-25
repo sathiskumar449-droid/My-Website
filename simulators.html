@@ -271,18 +271,20 @@
             <!-- WhatsApp Quick Suggestion Chips -->
             <div class="wa-quick-chips">
               <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('👋 Hi!')">👋 Hi!</button>
-              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('💰 Get Project Price Estimate')">💰 Price Estimate</button>
-              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🛒 Tell me about POS Billing')">🛒 POS & GST Billing</button>
-              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🌐 Custom Web Applications')">🌐 Web Apps</button>
-              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('⚡ How fast can you deliver?')">⚡ Timeline</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('💰 Price Estimate')">💰 Price Estimate</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🛒 POS & GST Billing')">🛒 POS & GST Billing</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🌐 Custom Web Apps')">🌐 Web Apps</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('⚡ Timeline')">⚡ Timeline</button>
             </div>
 
             <!-- WhatsApp Chat Input Bar -->
             <form class="wa-input-bar" id="wa-chat-form" onsubmit="handleWaChatSubmit(event)">
-              <button type="button" class="wa-icon-btn" title="Emoji">😊</button>
-              <input type="text" id="wa-chat-input" class="wa-text-input" placeholder="Type a message (e.g. Hi, What are your prices?)" autocomplete="off" />
+              <div class="wa-input-wrapper">
+                <span class="wa-emoji-icon">😊</span>
+                <input type="text" id="wa-chat-input" class="wa-text-input" placeholder="Type a message (e.g. Hi, Pricing)..." autocomplete="off" />
+              </div>
               <button type="submit" class="wa-send-btn" aria-label="Send message">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
               </button>
