@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaVerse Software Studio | Engineering Digital Experiences That Move Businesses Forward</title>
+  <meta name="description" content="NexaVerse Software Studio builds high-performance modern websites, web applications, POS billing systems, e-commerce platforms, and intelligent business automations.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Ambient Horizon Orbit Rings & 3D Glowing Background -->
+  <div class="site-bg-ambient" aria-hidden="true">
+    <div class="bg-studio-rings"></div>
+    <div class="bg-neural-glow-1"></div>
+  </div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name">NEXAVERSE</span>
+          <span class="brand-tag">SOFTWARE STUDIO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="simulators.html" class="nav-link">Live Demo Simulator</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Choose Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20NexaVerse,%20I%20want%20to%20discuss%20a%20project" target="_blank" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.189-.553-1.619-.676-2.652-2.327-2.733-2.434-.08-.106-.653-.872-.653-1.662 0-.79.414-1.178.559-1.341.144-.162.315-.203.42-.203.104 0 .209.002.301.006.096.004.226-.037.353.27.13.315.446 1.088.486 1.168.04.08.067.174.013.28-.053.106-.08.172-.16.265-.08.093-.169.208-.241.279-.08.08-.163.167-.07.327.094.16.417.689.896 1.115.617.549 1.137.719 1.297.799.16.08.254.07.348-.04.094-.108.401-.468.508-.629.107-.162.214-.135.361-.08.148.053.935.441 1.096.521.161.08.268.12.308.188.04.068.04.392-.104.797z"/>
+          </svg>
+          WhatsApp Chat
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Home Overview) -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>AVAILABLE FOR NEW PROJECTS</span>
+          </div>
+
+          <h1 class="hero-title">
+            Engineering High-Performance <br>
+            Digital Experiences
+          </h1>
+
+          <div class="hero-typed-container">
+            <span class="gradient-text" id="typed-service-text">Modern Websites</span>
+          </div>
+
+          <p class="hero-desc">
+            We build fast, responsive and intelligent digital solutions — from modern websites and dynamic e-commerce platforms to high-performance web applications, smart POS systems and AI-powered business automation.
+          </p>
+
+          <p class="hero-subtext">
+            Designed for performance. Built for real businesses. Ready to scale.
+          </p>
+
+          <div class="hero-actions">
+            <a href="services.html" class="btn btn-primary">
+              Explore All Services
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="simulators.html" class="btn btn-secondary">
+              Try Live Demo Simulator
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- What We Build Section -->
+  <section class="section section-alt" id="what-we-build">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>WHAT WE BUILD</span>
+        </div>
+        <h2 class="section-title">What We Build</h2>
+        <p class="section-subtitle">Custom digital solutions designed around the way your business works.</p>
+      </div>
+
+      <div class="what-we-build-grid" id="what-we-build-grid">
+        <!-- Card 1: Modern Websites & E-Commerce -->
+        <div class="what-we-build-card tilt-card" data-service="websites-ecommerce">
+          <div class="app-icon-squircle app-icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3>Modern Websites & E-Commerce</h3>
+          <p>Fast, responsive websites and e-commerce platforms with modern UI, smooth animations, dynamic content and payment integration.</p>
+        </div>
+
+        <!-- Card 2: Modern POS & Billing Software -->
+        <div class="what-we-build-card tilt-card" data-service="pos-billing">
+          <div class="app-icon-squircle app-icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Modern POS & Billing Software</h3>
+          <p>Smart retail POS billing software with instant invoicing, inventory control, GST workflows, payments and real-time reporting.</p>
+        </div>
+
+        <!-- Card 3: ERP & Business Management -->
+        <div class="what-we-build-card tilt-card" data-service="erp">
+          <div class="app-icon-squircle app-icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          </div>
+          <h3>ERP & Business Management</h3>
+          <p>Centralized business software to manage operations, sales, inventory, customers, suppliers and reports.</p>
+        </div>
+
+        <!-- Card 4: AI WhatsApp Automation -->
+        <div class="what-we-build-card tilt-card" data-service="whatsapp-ai">
+          <div class="app-icon-squircle app-icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3>AI WhatsApp Automation</h3>
+          <p>Intelligent WhatsApp assistants that can handle customer questions, product discovery, orders and support.</p>
+        </div>
+
+        <!-- Card 5: Custom Web Applications -->
+        <div class="what-we-build-card tilt-card" data-service="custom-web-apps">
+          <div class="app-icon-squircle app-icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Custom Web Applications</h3>
+          <p>Build fast, scalable and modern web applications tailored to specific business requirements.</p>
+        </div>
+
+        <!-- Card 6: Business Automation -->
+        <div class="what-we-build-card tilt-card" data-service="automation">
+          <div class="app-icon-squircle app-icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <h3>Business Automation</h3>
+          <p>Automate repetitive business processes, notifications, workflows and data management.</p>
+        </div>
+
+        <!-- Card 7: API & System Integration -->
+        <div class="what-we-build-card tilt-card" data-service="system-integration">
+          <div class="app-icon-squircle app-icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>API & System Integration</h3>
+          <p>Connect websites, databases, payment gateways, WhatsApp, third-party APIs and existing business systems.</p>
+        </div>
+
+        <!-- Card 8: Custom Software Solutions -->
+        <div class="what-we-build-card tilt-card" data-service="custom-software">
+          <div class="app-icon-squircle app-icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Custom Software Solutions</h3>
+          <p>If your business has a unique requirement, we design and build software specifically around your workflow.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Service Detail View Container -->
+      <div class="service-detail-wrapper" id="service-detail-wrapper" style="display: none;">
+        <button type="button" class="btn btn-secondary back-to-grid-btn" id="back-to-grid-btn" onclick="closeServiceDetail()" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to What We Build
+        </button>
+
+        <div class="service-detail-card" id="service-detail-card">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions For Every Business Section -->
+  <section class="section" id="solutions-for-every-business">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>TAILORED INDUSTRY SOLUTIONS</span>
+        </div>
+        <h2 class="section-title">Solutions For Every Business</h2>
+        <p class="section-subtitle">Purpose-built software solutions designed to solve real business challenges.</p>
+      </div>
+
+      <div class="what-we-build-grid">
+        <!-- Card 1: Retail & Stores -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3>Retail & Stores</h3>
+          <p>POS, billing, inventory, barcode management, customer management and business reports.</p>
+        </div>
+
+        <!-- Card 2: Fashion & Apparel -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <h3>Fashion & Apparel</h3>
+          <p>E-commerce, product catalogs, inventory, size management, WhatsApp ordering and customer engagement.</p>
+        </div>
+
+        <!-- Card 3: Restaurants & Food Businesses -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Restaurants & Food Businesses</h3>
+          <p>Restaurant POS, table management, billing, kitchen workflows, inventory and daily sales reports.</p>
+        </div>
+
+        <!-- Card 4: Small & Growing Businesses -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Small & Growing Businesses</h3>
+          <p>Custom business management systems, CRM, billing, inventory and workflow automation.</p>
+        </div>
+
+        <!-- Card 5: Service Businesses -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Service Businesses</h3>
+          <p>Customer management, appointments, quotations, invoices, payments and automated follow-ups.</p>
+        </div>
+
+        <!-- Card 6: Manufacturing -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/></svg>
+          </div>
+          <h3>Manufacturing</h3>
+          <p>Inventory, production tracking, purchase management, sales, suppliers and operational reporting.</p>
+        </div>
+
+        <!-- Card 7: E-Commerce Businesses -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>E-Commerce Businesses</h3>
+          <p>Online stores, product management, order processing, payment integration and customer automation.</p>
+        </div>
+
+        <!-- Card 8: Enterprises -->
+        <div class="what-we-build-card tilt-card">
+          <div class="app-icon-squircle app-icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="9.01" y2="6"/><line x1="15" y1="6" x2="15.01" y2="6"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/><line x1="9" y1="14" x2="9.01" y2="14"/><line x1="15" y1="14" x2="15.01" y2="14"/></svg>
+          </div>
+          <h3>Enterprises</h3>
+          <p>Custom ERP, CRM, dashboards, API integrations, automation and scalable business applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Businesses Choose NexaVerse Section -->
+  <section class="section section-alt" id="why-choose-nexaverse">
+    <div class="container">
+      <div class="section-header" style="text-align:left;max-width:100%;">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>WHY CHOOSE NEXAVERSE</span>
+        </div>
+        <h2 class="section-title">Why Businesses Choose NexaVerse</h2>
+        <p class="section-subtitle" style="margin:0;">Technology should solve problems, simplify operations and create measurable business value.</p>
+      </div>
+
+      <div class="why-choose-nexa-grid">
+        <!-- Left Side: Supporting Paragraph -->
+        <div class="why-choose-left">
+          <p class="why-choose-lead-p">
+            We combine software engineering, automation and business understanding to create digital systems that are practical, scalable and built for real-world use.
+          </p>
+        </div>
+
+        <!-- Right Side: 6 Points (Simple Numbered Icon Rows, NOT cards) -->
+        <div class="why-choose-right">
+          <div class="why-choose-item">
+            <div class="why-choose-num">01</div>
+            <div class="why-choose-body">
+              <h4>Built Around Your Business</h4>
+              <p>Every solution is designed around your actual workflow and business requirements.</p>
+            </div>
+          </div>
+
+          <div class="why-choose-item">
+            <div class="why-choose-num">02</div>
+            <div class="why-choose-body">
+              <h4>Scalable Architecture</h4>
+              <p>Build today and grow tomorrow with software designed to handle increasing users, data and operations.</p>
+            </div>
+          </div>
+
+          <div class="why-choose-item">
+            <div class="why-choose-num">03</div>
+            <div class="why-choose-body">
+              <h4>Modern & Reliable Technology</h4>
+              <p>We use modern development technologies to create fast, maintainable and reliable applications.</p>
+            </div>
+          </div>
+
+          <div class="why-choose-item">
+            <div class="why-choose-num">04</div>
+            <div class="why-choose-body">
+              <h4>Connected Ecosystem</h4>
+              <p>Integrate websites, WhatsApp, payment gateways, APIs, databases and other business tools.</p>
+            </div>
+          </div>
+
+          <div class="why-choose-item">
+            <div class="why-choose-num">05</div>
+            <div class="why-choose-body">
+              <h4>Security First</h4>
+              <p>Business data and application security are considered throughout the development process.</p>
+            </div>
+          </div>
+
+          <div class="why-choose-item">
+            <div class="why-choose-num">06</div>
+            <div class="why-choose-body">
+              <h4>Continuous Support</h4>
+              <p>We provide ongoing improvements, maintenance and technical assistance after deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Solutions Showcase Section -->
+  <section class="section" id="featured-solutions">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>FEATURED SHOWCASE</span>
+        </div>
+        <h2 class="section-title">Featured Solutions</h2>
+        <p class="section-subtitle">Explore some of the digital products and business systems we build.</p>
+      </div>
+
+      <div class="showcase-container">
+        <!-- Solution 01: Smart POS & Business Management (Image Left / Content Right) -->
+        <div class="showcase-row">
+          <div class="showcase-visual">
+            <div class="showcase-glass-card">
+              <div class="showcase-card-header">
+                <div class="app-icon-squircle app-icon-orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="showcase-tag">LIVE POS TERMINAL</div>
+              </div>
+              <div class="showcase-mini-preview">
+                <div class="mini-pos-head">
+                  <span>80mm Thermal Receipt Engine</span>
+                  <span class="badge-active">GST Ready</span>
+                </div>
+                <div class="mini-pos-item"><span>Organic Almond Milk 1L</span><span>₹280.00</span></div>
+                <div class="mini-pos-item"><span>Basmati Rice 5kg</span><span>₹450.00</span></div>
+                <div class="mini-pos-total"><span>CGST (2.5%) + SGST (2.5%)</span><span>₹766.50</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-content">
+            <span class="showcase-num">SOLUTION 01</span>
+            <h3 class="showcase-title">Smart POS & Business Management</h3>
+            <p class="showcase-desc">A complete business management solution designed to simplify billing, inventory, customer management, payments and reporting from a single platform.</p>
+            <ul class="showcase-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Smart billing and invoicing</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Inventory and stock management</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Customer and supplier management</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Payment tracking</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Business reports and dashboards</li>
+            </ul>
+            <a href="simulators.html" class="btn btn-primary">Try Live Demo &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Solution 02: AI-Powered WhatsApp Commerce (Content Left / Image Right) -->
+        <div class="showcase-row reverse">
+          <div class="showcase-content">
+            <span class="showcase-num">SOLUTION 02</span>
+            <h3 class="showcase-title">AI-Powered WhatsApp Commerce</h3>
+            <p class="showcase-desc">An intelligent WhatsApp assistant that helps businesses interact with customers, showcase products, answer questions and streamline order management.</p>
+            <ul class="showcase-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> AI-powered customer conversations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Product discovery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Live product availability</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Order assistance</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated customer support</li>
+            </ul>
+            <a href="simulators.html" class="btn btn-primary">Try AI Assistant &rarr;</a>
+          </div>
+
+          <div class="showcase-visual">
+            <div class="showcase-glass-card">
+              <div class="showcase-card-header">
+                <div class="app-icon-squircle app-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </div>
+                <div class="showcase-tag">WHATSAPP AI BOT</div>
+              </div>
+              <div class="showcase-mini-preview">
+                <div class="mini-wa-bubble bot">👋 Hi! I can assist you with product discovery, live stock & instant WhatsApp orders.</div>
+                <div class="mini-wa-bubble user">Show me wireless earbuds in stock</div>
+                <div class="mini-wa-bubble bot">🎧 <strong>Wireless Bluetooth Earbuds</strong> — ₹1,899.00 (In Stock). Reply 1 to order now!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution 03: Custom ERP & Business Systems (Image Left / Content Right) -->
+        <div class="showcase-row">
+          <div class="showcase-visual">
+            <div class="showcase-glass-card">
+              <div class="showcase-card-header">
+                <div class="app-icon-squircle app-icon-rose">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                </div>
+                <div class="showcase-tag">ENTERPRISE ERP & CRM</div>
+              </div>
+              <div class="showcase-mini-preview">
+                <div class="mini-erp-stage"><span>New Inbound Inquiry</span><span class="count-pill">12 Leads</span></div>
+                <div class="mini-erp-stage"><span>Quotations Sent</span><span class="count-pill">6 Deals</span></div>
+                <div class="mini-erp-stage"><span>Order In Production</span><span class="count-pill">8 Orders</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-content">
+            <span class="showcase-num">SOLUTION 03</span>
+            <h3 class="showcase-title">Custom ERP & Business Systems</h3>
+            <p class="showcase-desc">Scalable business software built to connect operations, sales, inventory, customers, suppliers and reporting into one centralized system.</p>
+            <ul class="showcase-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Business workflow management</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Sales and purchase management</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Inventory tracking</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Customer and supplier management</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg> Reports and analytics</li>
+            </ul>
+            <a href="simulators.html" class="btn btn-primary">View Demo &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Value Pillars Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>THE NEXAVERSE STANDARD</span>
+        </div>
+        <h2 class="section-title">Built with Precision, Speed & Reliability</h2>
+        <p class="section-subtitle">We merge deep technical capability with modern product design to deliver applications that scale effortlessly.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card tilt-card">
+          <div class="app-icon-squircle app-icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3>Sub-Second Performance</h3>
+          <p>Optimized bundle sizes, edge SSR rendering, and lightweight modern CSS ensure instantaneous page loads.</p>
+        </div>
+
+        <div class="pillar-card tilt-card">
+          <div class="app-icon-squircle app-icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Rock-Solid Security</h3>
+          <p>Bank-grade encryption, JWT token management, sanitized API boundaries, and automated SSL configurations.</p>
+        </div>
+
+        <div class="pillar-card tilt-card">
+          <div class="app-icon-squircle app-icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          </div>
+          <h3>Modular Architecture</h3>
+          <p>Clean code written in modular components that allow you to expand and scale features without painful refactoring.</p>
+        </div>
+
+        <div class="pillar-card tilt-card">
+          <div class="app-icon-squircle app-icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h3>Dedicated 24/7 Support</h3>
+          <p>Direct access to your developer for quick bug fixes, continuous feature deployments, and infrastructure maintenance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Trust Metrics & Stats Section -->
+  <section class="section">
+    <div class="container">
+      <div class="trust-metrics-card">
+        <div class="trust-metric-pill">
+          <h3>99.8%</h3>
+          <p>Production Uptime Guarantee</p>
+        </div>
+        <div class="trust-metric-pill">
+          <h3>45+</h3>
+          <p>Delivered Software Systems</p>
+        </div>
+        <div class="trust-metric-pill">
+          <h3>&lt;300ms</h3>
+          <p>Average API Latency</p>
+        </div>
+        <div class="trust-metric-pill">
+          <h3>24/7</h3>
+          <p>Direct Developer Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CTA Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner-glass">
+        <h2 class="cta-title">Ready to Build Your Custom Software?</h2>
+        <p class="cta-desc">Direct pair-programming with experienced full-stack engineers. No middle managers, no template lock-ins.</p>
+        <div class="cta-actions">
+          <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20NexaVerse,%20let's%20start%20our%20project" target="_blank" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.189-.553-1.619-.676-2.652-2.327-2.733-2.434-.08-.106-.653-.872-.653-1.662 0-.79.414-1.178.559-1.341.144-.162.315-.203.42-.203.104 0 .209.002.301.006.096.004.226-.037.353.27.13.315.446 1.088.486 1.168.04.08.067.174.013.28-.053.106-.08.172-.16.265-.08.093-.169.208-.241.279-.08.08-.163.167-.07.327.094.16.417.689.896 1.115.617.549 1.137.719 1.297.799.16.08.254.07.348-.04.094-.108.401-.468.508-.629.107-.162.214-.135.361-.08.148.053.935.441 1.096.521.161.08.268.12.308.188.04.068.04.392-.104.797z"/>
+            </svg>
+            Chat with Developer on WhatsApp
+          </a>
+          <a href="contact.html" class="btn btn-primary">
+            Send Project Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-card-box">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <span>NEXAVERSE</span>
+          </a>
+          <div class="footer-brand-info">
+            <p>High-performance software engineering studio crafting custom web applications, POS billing terminals, and intelligent automation systems.</p>
+          </div>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#service-websites">Web Applications</a></li>
+            <li><a href="services.html#service-pos">POS & Thermal Billing</a></li>
+            <li><a href="services.html#service-erp">ERP & CRM Software</a></li>
+            <li><a href="services.html#service-automation">AI & Web Scraping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Interactive</h4>
+          <ul class="footer-links">
+            <li><a href="simulators.html#pos-sim">POS Simulator</a></li>
+            <li><a href="simulators.html#erp-sim">ERP Pipeline</a></li>
+            <li><a href="simulators.html#wa-sim">WhatsApp AI Bot</a></li>
+            <li><a href="why-us.html">Why Choose Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Direct Contact</h4>
+          <ul class="footer-links">
+            <li><a href="https://api.whatsapp.com/send?phone=919876543210" target="_blank">WhatsApp Direct</a></li>
+            <li><a href="mailto:contact@nexaverse.io">contact@nexaverse.io</a></li>
+            <li><a href="contact.html">Request a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NexaVerse Software Studio. All rights reserved.</p>
+        <p>Built with Precision & High-Performance Modern CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Thermal Invoice Generator Modal -->
+  <div class="modal-overlay" id="invoice-modal">
+    <div class="invoice-modal-card">
+      <div class="invoice-modal-header">
+        <div class="invoice-modal-title">Generated GST Thermal Tax Invoice</div>
+        <button class="invoice-modal-close" onclick="closeInvoiceModal()" aria-label="Close invoice modal">✕</button>
+      </div>
+      
+      <div class="thermal-receipt" id="invoice-receipt-content">
+        <!-- Injected via js/simulators.js -->
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeInvoiceModal()" style="padding:10px 18px;font-size:12px;">Close</button>
+        <button class="btn btn-primary" onclick="printReceipt()" style="padding:10px 18px;font-size:12px;">Print 80mm Receipt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascript Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/simulators.js"></script>
+</body>
+</html>

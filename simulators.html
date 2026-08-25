@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Interactive Software Sandbox | NexaVerse</title>
+  <meta name="description" content="Experience NexaVerse's live working simulators: POS Billing Terminal with real-time GST, ERP Kanban pipeline, and Web Automation streaming console.">
+  
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Ambient Horizon Orbit Rings & 3D Glowing Background -->
+  <div class="site-bg-ambient" aria-hidden="true">
+    <div class="bg-studio-rings"></div>
+    <div class="bg-neural-glow-1"></div>
+  </div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name">NEXAVERSE</span>
+          <span class="brand-tag">SOFTWARE STUDIO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="simulators.html" class="nav-link active">Live Demo Simulator</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Choose Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20NexaVerse,%20I%20want%20to%20discuss%20a%20project" target="_blank" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.189-.553-1.619-.676-2.652-2.327-2.733-2.434-.08-.106-.653-.872-.653-1.662 0-.79.414-1.178.559-1.341.144-.162.315-.203.42-.203.104 0 .209.002.301.006.096.004.226-.037.353.27.13.315.446 1.088.486 1.168.04.08.067.174.013.28-.053.106-.08.172-.16.265-.08.093-.169.208-.241.279-.08.08-.163.167-.07.327.094.16.417.689.896 1.115.617.549 1.137.719 1.297.799.16.08.254.07.348-.04.094-.108.401-.468.508-.629.107-.162.214-.135.361-.08.148.053.935.441 1.096.521.161.08.268.12.308.188.04.068.04.392-.104.797z"/>
+          </svg>
+          WhatsApp Chat
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero Header -->
+  <header class="page-hero-header">
+    <div class="container">
+      <div class="section-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>REAL-TIME INTERACTIVE PROTOTYPES</span>
+      </div>
+      <h1 class="section-title">Live Interactive Software Sandbox</h1>
+      <p class="section-subtitle" style="max-width:680px;margin:0 auto;">
+        Test our functional software modules right inside your browser. From touch POS billing and thermal invoice generation to live Kanban pipelines and bot streaming logs.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Simulator Container -->
+  <main class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="simulator-wrapper">
+        <!-- Top Carousel Controls & Active Simulation Title Header -->
+        <div class="sim-carousel-header">
+          <div class="sim-active-info">
+            <span class="sim-active-icon">🛒</span>
+            <span class="sim-active-title">POS & GST Billing Terminal</span>
+            <span class="sim-swipe-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <span>Swipe ⟷</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+
+          <div class="sim-carousel-controls">
+            <button type="button" class="sim-nav-arrow" onclick="prevSimulator()" aria-label="Previous Simulator">&#10094;</button>
+            <div class="sim-dots-indicator">
+              <span class="sim-dot active" onclick="switchSimulator(0)" title="POS Billing"></span>
+              <span class="sim-dot" onclick="switchSimulator(1)" title="ERP Pipeline"></span>
+              <span class="sim-dot" onclick="switchSimulator(2)" title="WhatsApp AI Bot"></span>
+            </div>
+            <button type="button" class="sim-nav-arrow" onclick="nextSimulator()" aria-label="Next Simulator">&#10095;</button>
+          </div>
+        </div>
+
+        <!-- Tab 1: POS Billing Terminal -->
+        <div class="sim-view-panel active" id="pos-panel">
+          <div class="pos-terminal-grid">
+            <div class="pos-catalog-section">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h3 style="font-size:16px;font-weight:700;color:var(--text-primary);">Touch Product Catalog</h3>
+                <span style="font-size:12px;color:var(--terracotta-deep);font-weight:700;">Click items to add to cart</span>
+              </div>
+
+              <div class="pos-category-bar">
+                <button class="pos-cat-btn active" data-category="retail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                  Retail & Supermarket
+                </button>
+                <button class="pos-cat-btn" data-category="restaurant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+                  Restaurant & Cafe
+                </button>
+                <button class="pos-cat-btn" data-category="electronics">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+                  Electronics & Accessories
+                </button>
+              </div>
+
+              <div class="pos-items-grid" id="pos-items-container">
+                <!-- Injected via js/simulators.js -->
+              </div>
+            </div>
+
+            <!-- POS Cart & Summary Panel -->
+            <div class="pos-cart-panel">
+              <div class="cart-header">
+                <div>
+                  <h3 style="font-size:15px;font-weight:700;color:var(--text-primary);">Order Summary & GST</h3>
+                  <small style="color:var(--text-muted);font-size:11px;">GSTIN: 33AAAAA0000A1Z5</small>
+                </div>
+                <button onclick="clearCart()" style="background:none;border:none;color:#EF4444;font-size:12px;font-weight:700;cursor:pointer;">Clear ✕</button>
+              </div>
+
+              <div class="cart-items-list" id="pos-cart-list">
+                <!-- Cart rows injected via JS -->
+              </div>
+
+              <div class="cart-summary">
+                <div class="summary-row">
+                  <span>Subtotal (Excl. Tax)</span>
+                  <span id="pos-subtotal" style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary);">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span>CGST (Central Tax)</span>
+                  <span id="pos-cgst" style="font-family:var(--font-mono);font-weight:700;color:var(--terracotta-deep);">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span>SGST (State Tax)</span>
+                  <span id="pos-sgst" style="font-family:var(--font-mono);font-weight:700;color:var(--terracotta-deep);">₹0.00</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Net Payable Amount</span>
+                  <span id="pos-grandtotal" style="font-family:var(--font-mono);font-weight:800;color:var(--terracotta-primary);font-size:1.35rem;">₹0.00</span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" id="generate-invoice-btn" style="width:100%;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Generate & Print GST Invoice
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: ERP & CRM Kanban -->
+        <div class="sim-view-panel" id="erp-panel">
+          <div style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+            <div>
+              <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);">Multi-Branch Sales & Deal Stages</h3>
+              <p style="font-size:12.5px;color:var(--text-secondary);font-weight:600;">Simulated live CRM pipeline with real-time deal stage values.</p>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--terracotta-deep);font-weight:800;background:var(--terracotta-badge);padding:4px 12px;border-radius:var(--radius-full);">Live Sync: Connected</span>
+          </div>
+
+          <div class="erp-kanban-board">
+            <div class="kanban-col">
+              <div class="kanban-col-header">
+                <span>Inbound Inquiries (4)</span>
+                <span>₹1,45,000</span>
+              </div>
+              <div class="kanban-card">
+                <div class="kanban-card-title">Apex Logistics - Web Fleet Portal</div>
+                <div class="kanban-card-value">₹45,000</div>
+              </div>
+              <div class="kanban-card">
+                <div class="kanban-card-title">GreenLeaf Supermarket - POS Setup</div>
+                <div class="kanban-card-value">₹32,000</div>
+              </div>
+              <div class="kanban-card">
+                <div class="kanban-card-title">Zara Fabrics - E-Way & GST Engine</div>
+                <div class="kanban-card-value">₹28,000</div>
+              </div>
+            </div>
+
+            <div class="kanban-col">
+              <div class="kanban-col-header">
+                <span>In Development (3)</span>
+                <span>₹2,80,000</span>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid var(--terracotta-primary);">
+                <div class="kanban-card-title">MediCare Clinics - Multi-Doctor ERP</div>
+                <div class="kanban-card-value">₹1,20,000</div>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid var(--terracotta-primary);">
+                <div class="kanban-card-title">SwiftBite - Food Delivery App</div>
+                <div class="kanban-card-value">₹95,000</div>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid var(--terracotta-primary);">
+                <div class="kanban-card-title">AutoParts Hub - B2B Wholesaler Portal</div>
+                <div class="kanban-card-value">₹65,000</div>
+              </div>
+            </div>
+
+            <div class="kanban-col">
+              <div class="kanban-col-header">
+                <span>Deployed & Active (5)</span>
+                <span>₹4,20,000</span>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid #10B981;">
+                <div class="kanban-card-title">Royal Spice - 3 Branch Thermal POS</div>
+                <div class="kanban-card-value" style="color:#10B981;">₹78,000 (Live)</div>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid #10B981;">
+                <div class="kanban-card-title">Skyline Realtors - Lead WhatsApp Bot</div>
+                <div class="kanban-card-value" style="color:#10B981;">₹55,000 (Live)</div>
+              </div>
+              <div class="kanban-card" style="border-left:3px solid #10B981;">
+                <div class="kanban-card-title">PrimeMart - Barcode Inventory Engine</div>
+                <div class="kanban-card-value" style="color:#10B981;">₹92,000 (Live)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: WhatsApp AI Chatbot Simulator -->
+        <div class="sim-view-panel" id="whatsapp-bot-panel">
+          <div class="wa-simulator-container">
+            <!-- WhatsApp Chat Header -->
+            <div class="wa-chat-header">
+              <div class="wa-header-left">
+                <div class="wa-avatar-wrap">
+                  🤖
+                  <span class="wa-status-dot"></span>
+                </div>
+                <div class="wa-contact-info">
+                  <div class="wa-contact-name">
+                    <span>NexaVerse AI Assistant</span>
+                    <svg class="wa-verified-badge" viewBox="0 0 24 24" fill="#25D366" width="16" height="16">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                  <div class="wa-contact-status">online • instant reply AI bot</div>
+                </div>
+              </div>
+              <div class="wa-header-actions">
+                <span class="wa-badge-tech">Neural NLP v2.4</span>
+              </div>
+            </div>
+
+            <!-- WhatsApp Messages Body -->
+            <div class="wa-messages-area" id="wa-messages-body">
+              <!-- Injected dynamically by js/simulators.js -->
+            </div>
+
+            <!-- WhatsApp Quick Suggestion Chips -->
+            <div class="wa-quick-chips">
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('👋 Hi!')">👋 Hi!</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('💰 Get Project Price Estimate')">💰 Price Estimate</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🛒 Tell me about POS Billing')">🛒 POS & GST Billing</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('🌐 Custom Web Applications')">🌐 Web Apps</button>
+              <button type="button" class="wa-chip-btn" onclick="sendQuickMessage('⚡ How fast can you deliver?')">⚡ Timeline</button>
+            </div>
+
+            <!-- WhatsApp Chat Input Bar -->
+            <form class="wa-input-bar" id="wa-chat-form" onsubmit="handleWaChatSubmit(event)">
+              <button type="button" class="wa-icon-btn" title="Emoji">😊</button>
+              <input type="text" id="wa-chat-input" class="wa-text-input" placeholder="Type a message (e.g. Hi, What are your prices?)" autocomplete="off" />
+              <button type="submit" class="wa-send-btn" aria-label="Send message">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulator Call to Action -->
+      <div style="margin-top:40px;background:#FFFFFF;border:1px solid var(--border-glass-bright);border-radius:var(--radius-xl);padding:36px;text-align:center;box-shadow:var(--shadow-card);">
+        <h3 style="font-size:1.35rem;font-weight:800;color:var(--text-primary);margin-bottom:8px;">Want a Custom Tailored Software for Your Business?</h3>
+        <p style="font-size:14px;color:var(--text-secondary);max-width:540px;margin:0 auto 24px auto;">
+          We can deploy a personalized POS, ERP, or automation engine branded with your business logo and integrated with your hardware.
+        </p>
+        <a href="contact.html?service=CustomSimulator" class="btn btn-primary">
+          Request Custom Software Deployment &rarr;
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Printable Invoice Modal -->
+  <div class="modal-overlay" id="invoice-modal">
+    <div class="invoice-paper">
+      <button class="invoice-close-btn" id="modal-close-btn">✕</button>
+      <div class="invoice-header-print">
+        <h3>NEXAVERSE DIGITAL</h3>
+        <p style="font-size:11px;color:#4b5563;">Tax Invoice / Bill of Supply</p>
+        <p style="font-size:10px;color:#6b7280;">GSTIN: 33AAAAA0000A1Z5 | CIN: U72900TN2026PTC123456</p>
+      </div>
+
+      <div class="invoice-meta">
+        <div>
+          <strong>Invoice No:</strong> <span id="inv-number">INV-2026-8492</span><br>
+          <strong>Date:</strong> <span id="inv-date">24 Aug 2026</span>
+        </div>
+        <div style="text-align:right;">
+          <strong>Mode:</strong> Counter POS<br>
+          <strong>Status:</strong> PAID (UPI/Cash)
+        </div>
+      </div>
+
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Item & HSN</th>
+            <th style="text-align:center;">Qty</th>
+            <th style="text-align:right;">Rate</th>
+            <th style="text-align:right;">Total</th>
+          </tr>
+        </thead>
+        <tbody id="invoice-items-body">
+          <!-- Injected via JS -->
+        </tbody>
+      </table>
+
+      <div class="invoice-total-section">
+        <div style="display:flex;justify-content:space-between;">
+          <span>Subtotal:</span>
+          <span id="inv-subtotal">₹0.00</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span>CGST (Central Tax):</span>
+          <span id="inv-cgst">₹0.00</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span>SGST (State Tax):</span>
+          <span id="inv-sgst">₹0.00</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-weight:800;font-size:14px;border-top:1px solid #111827;padding-top:6px;margin-top:4px;">
+          <span>Net Payable:</span>
+          <span id="inv-grandtotal">₹0.00</span>
+        </div>
+      </div>
+
+      <div class="invoice-actions no-print">
+        <button class="btn btn-primary" onclick="printInvoice()" style="width:100%;">
+          🖨️ Print ESC/POS Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-card-box footer-brand-info">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <span>NEXAVERSE</span>
+          </a>
+          <p>Next-generation software engineering, intelligent web automations, smart POS billing systems & enterprise solutions crafted for sustainable business growth.</p>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="about.html">About NexaVerse</a></li>
+            <li><a href="services.html">All 8 Services</a></li>
+            <li><a href="simulators.html">Live Demo Simulator</a></li>
+            <li><a href="why-us.html">Why Choose Us</a></li>
+            <li><a href="contact.html">Get an Estimate</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#service-websites">Websites & Landing Pages</a></li>
+            <li><a href="services.html#service-pos">POS & Thermal Billing</a></li>
+            <li><a href="services.html#service-automation">Web Automation Bots</a></li>
+            <li><a href="services.html#service-gst">GST Invoicing Engines</a></li>
+            <li><a href="services.html#service-erp">ERP & CRM Pipelines</a></li>
+            <li><a href="services.html#service-mobile">Mobile App Development</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://api.whatsapp.com/send?phone=919876543210" target="_blank">WhatsApp Direct</a></li>
+            <li><a href="mailto:hello@nexaverse.tech">hello@nexaverse.tech</a></li>
+            <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+            <li><a href="contact.html">Request Quote</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 NexaVerse Technologies. All rights reserved.</div>
+        <div>Engineered with Precision & Passion.</div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/simulators.js"></script>
+</body>
+</html>
