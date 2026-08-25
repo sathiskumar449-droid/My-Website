@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCostCalculator();
   initSmoothAnchorScroll();
   handlePageLoadHash();
+  initContactForm();
 });
 
 /* --------------------------------------------------------------------------
@@ -654,3 +655,66 @@ function handlePageLoadHash() {
     }
   }
 }
+
+/* --------------------------------------------------------------------------
+   Contact Form & URL Parameter Pre-population
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById('project-contact-form');
+  const industrySelect = document.getElementById('contact-industry');
+  const serviceSelect = document.getElementById('contact-service');
+
+  // Handle URL Query Parameters (e.g. ?industry=Textile-Garment or ?service=POS)
+  if (window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const industryParam = params.get('industry');
+    const serviceParam = params.get('service');
+
+    if (industryParam && industrySelect) {
+      const normalized = industryParam.replace(/-/g, ' ').toLowerCase();
+      Array.from(industrySelect.options).forEach(opt => {
+        if (opt.value && (opt.value.toLowerCase().includes(normalized) || normalized.includes(opt.value.toLowerCase()))) {
+          industrySelect.value = opt.value;
+        }
+      });
+    }
+
+    if (serviceParam && serviceSelect) {
+      const normalized = serviceParam.replace(/-/g, ' ').toLowerCase();
+      Array.from(serviceSelect.options).forEach(opt => {
+        if (opt.value && (opt.value.toLowerCase().includes(normalized) || normalized.includes(opt.value.toLowerCase()))) {
+          serviceSelect.value = opt.value;
+        }
+      });
+    }
+  }
+
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name')?.value.trim() || '';
+    const phone = document.getElementById('contact-phone')?.value.trim() || '';
+    const industry = industrySelect?.value || '';
+    const service = serviceSelect?.value || '';
+    const message = document.getElementById('contact-message')?.value.trim() || '';
+
+    let text = `*New Project Consultation Inquiry*\n\n` +
+      `👤 *Name:* ${name}\n` +
+      `📱 *Phone:* ${phone}\n`;
+
+    if (industry) {
+      text += `🏢 *Industry:* ${industry}\n`;
+    }
+    if (service) {
+      text += `🎯 *Target Solution:* ${service}\n`;
+    }
+    if (message) {
+      text += `📝 *Requirements:* ${message}\n`;
+    }
+
+    const waUrl = `https://api.whatsapp.com/send?phone=919876543210&text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+  });
+}
+

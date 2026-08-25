@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#FFF6F0">
+  <title>Industries | NexaVerse Software Studio</title>
+  <meta name="description" content="Purpose-built software, ERP, automation and AI solutions for textile, manufacturing, paper, engineering, retail, distribution and modern businesses.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Ambient Horizon Orbit Rings & 3D Glowing Background -->
+  <div class="site-bg-ambient" aria-hidden="true">
+    <div class="bg-studio-rings"></div>
+    <div class="bg-neural-glow-1"></div>
+  </div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-name">NEXAVERSE</span>
+          <span class="brand-tag">SOFTWARE STUDIO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item-dropdown">
+          <a href="services.html" class="nav-link dropdown-toggle" id="servicesDropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu" aria-labelledby="servicesDropdown">
+            <div class="dropdown-menu-header">
+              <span class="dropdown-header-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Our Services &amp; Solutions
+              </span>
+              <a href="services.html" class="dropdown-view-all">View All &rarr;</a>
+            </div>
+            <div class="dropdown-grid">
+              <a href="services.html#service-websites" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Websites &amp; E-Commerce</div>
+                  <p class="dropdown-item-desc">High-speed websites &amp; online stores</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-saas" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Web Apps &amp; SaaS</div>
+                  <p class="dropdown-item-desc">Custom web portals &amp; dashboards</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-pos" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">POS &amp; GST Billing</div>
+                  <p class="dropdown-item-desc">Retail POS, inventory &amp; billing engine</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-whatsapp" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">AI WhatsApp Commerce</div>
+                  <p class="dropdown-item-desc">Smart conversational sales &amp; AI support</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-erp" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-rose">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Enterprise ERP &amp; CRM</div>
+                  <p class="dropdown-item-desc">Centralized business management suites</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-automation" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Web Automation &amp; Bots</div>
+                  <p class="dropdown-item-desc">Lead scrapers &amp; automated data pipelines</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-mobile" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-cyan">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Mobile App Development</div>
+                  <p class="dropdown-item-desc">Native Android &amp; iOS cross-platform apps</p>
+                </div>
+              </a>
+
+              <a href="services.html#service-custom-software-systems" class="dropdown-item">
+                <div class="app-icon-squircle-sm app-icon-amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="dropdown-item-info">
+                  <div class="dropdown-item-title">Custom Software Systems</div>
+                  <p class="dropdown-item-desc">Tailored architecture for unique workflows</p>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-menu-footer">
+              <a href="contact.html" class="dropdown-footer-cta">
+                <span>Looking for a custom solution?</span>
+                <strong>Talk to Developer &rarr;</strong>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="industries.html" class="nav-link active">Industries</a></li>
+        <li><a href="simulators.html" class="nav-link">Live Demo Simulator</a></li>
+        <li><a href="why-us.html" class="nav-link">Why Choose Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Industries Page Compact Hero -->
+  <header class="hero-section" style="padding-bottom:50px;">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>INDUSTRY-FOCUSED SOFTWARE</span>
+          </div>
+
+          <h1 class="hero-title">
+            Software Built Around Your Industry
+          </h1>
+
+          <p class="hero-desc">
+            Practical software, automation and digital systems designed around the workflows of modern businesses.
+          </p>
+
+          <p class="hero-industry-subline">
+            Textile &bull; Manufacturing &bull; Paper &amp; Packaging &bull; Engineering &bull; Distribution &bull; Retail
+          </p>
+
+          <div class="hero-actions">
+            <a href="#industry-solutions" class="btn btn-primary">
+              Explore Industry Solutions
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+              Talk to Our Team &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Introduction Section -->
+  <section class="section section-alt" id="industries-intro" style="padding-top:40px;padding-bottom:40px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:0;">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <span>OPERATIONAL ADAPTABILITY</span>
+        </div>
+        <h2 class="section-title">Built Around Real Business Workflows</h2>
+        <p class="section-subtitle" style="max-width:760px;margin:0 auto;">
+          Different industries operate differently. NexaVerse builds software around the way your teams work — from production and inventory to sales, dispatch, customer communication and reporting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Solutions Section -->
+  <main class="section" id="industry-solutions">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>PURPOSE-BUILT INDUSTRY SUITES</span>
+        </div>
+        <h2 class="section-title">Tailored Software for Every Industry</h2>
+        <p class="section-subtitle">Discover how NexaVerse engineering and automation solve real-world operational bottlenecks.</p>
+      </div>
+
+      <div class="industries-grid">
+
+        <!-- 01 — TEXTILE & GARMENT -->
+        <article class="industry-card tilt-card" id="industry-textile">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+              </div>
+              <span class="industry-card-num">01 / 08</span>
+            </div>
+            <span class="industry-card-name">Textile &amp; Garment</span>
+            <h2 class="industry-headline">Software for Production-Driven Textile Businesses</h2>
+            <p class="industry-desc">Connect production, inventory, job work, purchasing, sales and dispatch workflows in one practical business system.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">ERP</span>
+                <span class="industry-tag-pill">Production Tracking</span>
+                <span class="industry-tag-pill">Inventory</span>
+                <span class="industry-tag-pill">Job Work</span>
+                <span class="industry-tag-pill">Sales &amp; Dispatch</span>
+                <span class="industry-tag-pill">WhatsApp Automation</span>
+                <span class="industry-tag-pill">Reports</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Textile-Garment" class="btn btn-secondary" style="width:100%;">
+              Explore Textile Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 02 — MANUFACTURING -->
+        <article class="industry-card tilt-card" id="industry-manufacturing">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/></svg>
+              </div>
+              <span class="industry-card-num">02 / 08</span>
+            </div>
+            <span class="industry-card-name">Manufacturing</span>
+            <h2 class="industry-headline">Connected Systems for Manufacturing Operations</h2>
+            <p class="industry-desc">Coordinate production, materials, inventory, purchasing, quality and reporting through connected digital workflows.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">ERP</span>
+                <span class="industry-tag-pill">Production Planning</span>
+                <span class="industry-tag-pill">Material Management</span>
+                <span class="industry-tag-pill">Inventory</span>
+                <span class="industry-tag-pill">Quality Tracking</span>
+                <span class="industry-tag-pill">Reports</span>
+                <span class="industry-tag-pill">Automation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Manufacturing" class="btn btn-secondary" style="width:100%;">
+              Explore Manufacturing Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 03 — PAPER & PACKAGING -->
+        <article class="industry-card tilt-card" id="industry-paper-packaging">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <span class="industry-card-num">03 / 08</span>
+            </div>
+            <span class="industry-card-name">Paper &amp; Packaging</span>
+            <h2 class="industry-headline">Digital Workflows for Paper &amp; Packaging Operations</h2>
+            <p class="industry-desc">Manage raw materials, production, orders, stock and dispatch with software designed around operational workflows.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">Production</span>
+                <span class="industry-tag-pill">Raw Materials</span>
+                <span class="industry-tag-pill">Inventory</span>
+                <span class="industry-tag-pill">Order Management</span>
+                <span class="industry-tag-pill">Dispatch</span>
+                <span class="industry-tag-pill">Reporting</span>
+                <span class="industry-tag-pill">Automation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Paper-Packaging" class="btn btn-secondary" style="width:100%;">
+              Explore Paper &amp; Packaging Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 04 — ENGINEERING & FABRICATION -->
+        <article class="industry-card tilt-card" id="industry-engineering">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <span class="industry-card-num">04 / 08</span>
+            </div>
+            <span class="industry-card-name">Engineering &amp; Fabrication</span>
+            <h2 class="industry-headline">Software for Job-Driven Engineering Businesses</h2>
+            <p class="industry-desc">Organize quotations, materials, job tracking, production and delivery workflows in one connected system.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">Job Tracking</span>
+                <span class="industry-tag-pill">Quotations</span>
+                <span class="industry-tag-pill">Materials</span>
+                <span class="industry-tag-pill">Production</span>
+                <span class="industry-tag-pill">Customer Management</span>
+                <span class="industry-tag-pill">Delivery</span>
+                <span class="industry-tag-pill">Reports</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Engineering-Fabrication" class="btn btn-secondary" style="width:100%;">
+              Explore Engineering Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 05 — WHOLESALE & DISTRIBUTION -->
+        <article class="industry-card tilt-card" id="industry-distribution">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+              <span class="industry-card-num">05 / 08</span>
+            </div>
+            <span class="industry-card-name">Wholesale &amp; Distribution</span>
+            <h2 class="industry-headline">Connected Sales and Distribution Workflows</h2>
+            <p class="industry-desc">Manage purchasing, inventory, sales, customers and dispatch from a centralized business system.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">Inventory</span>
+                <span class="industry-tag-pill">Purchasing</span>
+                <span class="industry-tag-pill">Sales</span>
+                <span class="industry-tag-pill">Customers</span>
+                <span class="industry-tag-pill">Dispatch</span>
+                <span class="industry-tag-pill">Reports</span>
+                <span class="industry-tag-pill">Automation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Wholesale-Distribution" class="btn btn-secondary" style="width:100%;">
+              Explore Distribution Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 06 — RETAIL & STORES -->
+        <article class="industry-card tilt-card" id="industry-retail">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
+              <span class="industry-card-num">06 / 08</span>
+            </div>
+            <span class="industry-card-name">Retail &amp; Stores</span>
+            <h2 class="industry-headline">Smart Software for Modern Retail Operations</h2>
+            <p class="industry-desc">Streamline billing, POS, inventory, customer management, supplier workflows and business reporting.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">POS</span>
+                <span class="industry-tag-pill">GST Billing</span>
+                <span class="industry-tag-pill">Inventory</span>
+                <span class="industry-tag-pill">Customers</span>
+                <span class="industry-tag-pill">Suppliers</span>
+                <span class="industry-tag-pill">Reports</span>
+                <span class="industry-tag-pill">WhatsApp</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer" style="display:flex;gap:10px;">
+            <a href="contact.html?industry=Retail-Stores" class="btn btn-secondary" style="flex:1;">
+              Explore Retail Solutions &rarr;
+            </a>
+            <a href="simulators.html" class="btn btn-primary" style="flex:1;">
+              Try POS Demo &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 07 — E-COMMERCE -->
+        <article class="industry-card tilt-card" id="industry-ecommerce">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-rose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <span class="industry-card-num">07 / 08</span>
+            </div>
+            <span class="industry-card-name">E-Commerce</span>
+            <h2 class="industry-headline">Digital Commerce and Customer Automation</h2>
+            <p class="industry-desc">Build online stores, manage product catalogues, process orders and connect customer communication with automation.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">Web Stores</span>
+                <span class="industry-tag-pill">Catalogues</span>
+                <span class="industry-tag-pill">Orders</span>
+                <span class="industry-tag-pill">Payments</span>
+                <span class="industry-tag-pill">WhatsApp</span>
+                <span class="industry-tag-pill">Customer Automation</span>
+                <span class="industry-tag-pill">Analytics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=E-Commerce" class="btn btn-secondary" style="width:100%;">
+              Explore E-Commerce Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 08 — SERVICE BUSINESSES -->
+        <article class="industry-card tilt-card" id="industry-services">
+          <div>
+            <div class="industry-card-header">
+              <div class="app-icon-squircle app-icon-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <span class="industry-card-num">08 / 08</span>
+            </div>
+            <span class="industry-card-name">Service Businesses</span>
+            <h2 class="industry-headline">Software for Customer-Focused Operations</h2>
+            <p class="industry-desc">Manage enquiries, quotations, bookings, invoicing and customer workflows with practical business software.</p>
+
+            <div class="industry-solutions-block">
+              <span class="industry-solutions-title">Relevant Solutions</span>
+              <div class="industry-tags-cloud">
+                <span class="industry-tag-pill">Enquiries</span>
+                <span class="industry-tag-pill">Quotations</span>
+                <span class="industry-tag-pill">Bookings</span>
+                <span class="industry-tag-pill">Invoicing</span>
+                <span class="industry-tag-pill">Customer Management</span>
+                <span class="industry-tag-pill">Automation</span>
+                <span class="industry-tag-pill">Reports</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-card-footer">
+            <a href="contact.html?industry=Service-Businesses" class="btn btn-secondary" style="width:100%;">
+              Explore Service Solutions &rarr;
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Local Market Positioning Strip -->
+      <div class="industry-local-box">
+        <p>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Built for businesses across Udumalpet, Tiruppur, Coimbatore and beyond.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Final CTA Section -->
+  <section class="section section-alt" id="industry-cta">
+    <div class="container">
+      <div class="cta-banner-glass">
+        <div class="cta-content">
+          <div class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>START A CONVERSATION</span>
+          </div>
+          <h2 class="section-title">Have an Industry-Specific Workflow in Mind?</h2>
+          <p class="section-subtitle" style="max-width:680px;margin:0 auto 28px auto;">
+            Tell us how your business operates. We'll help you identify the right software, automation or digital workflow for your requirements.
+          </p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">
+              Discuss Your Requirements
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20NexaVerse,%20I%20want%20to%20discuss%20an%20industry%20software%20workflow" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.189-.553-1.619-.676-2.652-2.327-2.733-2.434-.08-.106-.653-.872-.653-1.662 0-.79.414-1.178.559-1.341.144-.162.315-.203.42-.203.104 0 .209.002.301.006.096.004.226-.037.353.27.13.315.446 1.088.486 1.168.04.08.067.174.013.28-.053.106-.08.172-.16.265-.08.093-.169.208-.241.279-.08.08-.163.167-.07.327.094.16.417.689.896 1.115.617.549 1.137.719 1.297.799.16.08.254.07.348-.04.094-.108.401-.468.508-.629.107-.162.214-.135.361-.08.148.053.935.441 1.096.521.161.08.268.12.308.188.04.068.04.392-.104.797z"/></svg>
+              WhatsApp Us &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-card-box">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <span>NEXAVERSE</span>
+          </a>
+          <div class="footer-brand-info">
+            <p>Software engineering, business automation, POS, ERP and AI-powered solutions built for growing businesses.</p>
+          </div>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About NexaVerse</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="simulators.html">Live Demos</a></li>
+            <li><a href="why-us.html">Why Choose Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#service-websites">Websites &amp; E-Commerce</a></li>
+            <li><a href="services.html#service-saas">Web Apps &amp; SaaS</a></li>
+            <li><a href="services.html#service-pos">POS &amp; GST Billing</a></li>
+            <li><a href="services.html#service-whatsapp">AI WhatsApp Commerce</a></li>
+            <li><a href="services.html#service-erp">Enterprise ERP &amp; CRM</a></li>
+            <li><a href="services.html#service-automation">Web Automation &amp; Bots</a></li>
+            <li><a href="services.html#service-mobile">Mobile App Development</a></li>
+            <li><a href="services.html#service-custom-software-systems">Custom Software Systems</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-card-box">
+          <h4 class="footer-heading">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://api.whatsapp.com/send?phone=919876543210" target="_blank">WhatsApp Direct</a></li>
+            <li><a href="mailto:hello@nexaverse.tech">hello@nexaverse.tech</a></li>
+            <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+            <li><a href="contact.html">Request Quote</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NexaVerse Software Studio. All rights reserved.</p>
+        <p>Engineered with Precision &amp; Passion.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Bubble -->
+  <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20NexaVerse,%20I%20want%20to%20discuss%20an%20industry%20software%20workflow" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.189-.553-1.619-.676-2.652-2.327-2.733-2.434-.08-.106-.653-.872-.653-1.662 0-.79.414-1.178.559-1.341.144-.162.315-.203.42-.203.104 0 .209.002.301.006.096.004.226-.037.353.27.13.315.446 1.088.486 1.168.04.08.067.174.013.28-.053.106-.08.172-.16.265-.08.093-.169.208-.241.279-.08.08-.163.167-.07.327.094.16.417.689.896 1.115.617.549 1.137.719 1.297.799.16.08.254.07.348-.04.094-.108.401-.468.508-.629.107-.162.214-.135.361-.08.148.053.935.441 1.096.521.161.08.268.12.308.188.04.068.04.392-.104.797z"/>
+    </svg>
+  </a>
+
+  <!-- Javascript Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/simulators.js"></script>
+</body>
+</html>

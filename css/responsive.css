@@ -74,15 +74,41 @@
     --ios-glass-bg-hover: #FFFFFF;
   }
 
-  /* Disable smooth-scroll on touch root to allow 100% native momentum scrolling */
-  html {
+  /* Reset box sizing & prevent horizontal scroll */
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    position: relative;
     scroll-behavior: auto !important;
   }
 
-  /* 1. Lightweight Static Ripple Circles for Mobile Hero (Zero Frame Drop Architecture) */
+  img, svg, canvas, video, iframe {
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, a, li, button, label, input, textarea, select {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: var(--container-padding, 16px) !important;
+    padding-right: var(--container-padding, 16px) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 1. Lightweight Static Ripple Circles for Mobile Hero */
   .site-bg-ambient {
     display: block !important;
-    position: absolute !important; /* Absolute (not fixed) so it scrolls with hero without repainting */
+    position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
@@ -105,7 +131,6 @@
     pointer-events: none !important;
   }
 
-  /* Keep heavy canvas, cursor glow, and animated blur blobs disabled on mobile */
   .bg-neural-glow-1,
   #bg-canvas,
   #cursor-glow {
@@ -114,7 +139,7 @@
     filter: none !important;
   }
 
-  /* 2. Zero-overhead solid white cards across ALL pages (Index, About, Services, Simulator, Why-Us, Contact) */
+  /* 2. Solid white cards across ALL pages */
   .service-card,
   .tilt-card,
   .pillar-card,
@@ -150,7 +175,8 @@
   .testimonial-card,
   .form-control,
   .footer-card-box,
-  .pillar-icon-wrap {
+  .pillar-icon-wrap,
+  .industry-card {
     background: #FFFFFF !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -160,6 +186,7 @@
     transition: none !important;
     will-change: auto !important;
     opacity: 1 !important;
+    min-width: 0 !important;
   }
 
   .why-choose-body p {
@@ -170,7 +197,7 @@
     box-shadow: none !important;
   }
 
-  /* 3. Reset all scroll-reveal classes to visible instantly on mobile */
+  /* 3. Reset scroll-reveal classes to visible instantly on mobile */
   .reveal-on-scroll,
   .reveal-cards,
   .reveal-card,
@@ -182,7 +209,7 @@
     will-change: auto !important;
   }
 
-  /* 4. Clean solid Navbar on mobile */
+  /* 4. Navbar on mobile */
   .navbar,
   .navbar.scrolled {
     background: #FFFFFF !important;
@@ -194,7 +221,7 @@
   }
 
   .navbar-container {
-    padding: 0 16px !important;
+    padding: 0 var(--container-padding, 16px) !important;
   }
 
   .nav-toggle {
@@ -224,8 +251,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 82%;
-    max-width: 320px;
+    width: min(85vw, 320px);
     height: 100vh;
     background: #FFF6F0 !important;
     backdrop-filter: none !important;
@@ -235,11 +261,12 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: stretch !important;
-    padding: 80px 24px 40px 24px !important;
-    gap: 12px !important;
+    padding: 80px 20px 40px 20px !important;
+    gap: 10px !important;
     transition: right 0.3s ease !important;
     z-index: 1001;
     box-shadow: -15px 0 35px rgba(224, 83, 56, 0.12) !important;
+    overflow-y: auto !important;
   }
 
   .nav-menu.open {
@@ -247,8 +274,8 @@
   }
 
   .nav-link {
-    font-size: 15px !important;
-    padding: 13px 18px !important;
+    font-size: 14.5px !important;
+    padding: 12px 16px !important;
     border-radius: 12px !important;
     text-align: center !important;
     background: #FFFFFF !important;
@@ -335,13 +362,31 @@
     white-space: normal !important;
   }
 
-  /* 5. Clean Section Spacing */
+  /* 5. Section Spacing & Headers */
   .section {
-    padding: 45px 0;
+    padding: 42px 0;
   }
 
   .hero-section {
-    padding: calc(var(--header-height) + 16px) 0 42px 0 !important;
+    padding: calc(var(--header-height) + 16px) 0 40px 0 !important;
+  }
+
+  .page-hero-header {
+    padding: calc(var(--header-height) + 20px) 0 32px 0 !important;
+    margin-bottom: 28px !important;
+  }
+
+  .page-hero-header .section-title {
+    font-size: clamp(1.6rem, 5.8vw, 2.15rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+    padding: 0 4px !important;
+  }
+
+  .page-hero-header .section-subtitle {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    padding: 0 4px !important;
   }
 
   .hero-badge {
@@ -352,7 +397,7 @@
   }
 
   .hero-title {
-    font-size: clamp(1.65rem, 5.8vw, 2.25rem) !important;
+    font-size: clamp(1.6rem, 5.8vw, 2.2rem) !important;
     line-height: 1.22 !important;
     letter-spacing: -0.025em !important;
     text-wrap: balance !important;
@@ -372,7 +417,7 @@
   }
 
   #typed-service-text {
-    font-size: clamp(1.25rem, 4.8vw, 1.65rem) !important;
+    font-size: clamp(1.2rem, 4.8vw, 1.6rem) !important;
     line-height: 1.25 !important;
     display: inline-block !important;
     max-width: 100% !important;
@@ -386,18 +431,21 @@
     color: #334155 !important;
     font-weight: 500 !important;
     max-width: 520px !important;
-    margin: 0 auto 10px auto !important;
-    text-wrap: pretty !important;
+    margin: 0 auto 8px auto !important;
+    text-wrap: balance !important;
     padding: 0 4px !important;
   }
 
+  .hero-industry-subline,
   .hero-subtext {
     font-size: 12px !important;
     color: #64748B !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    line-height: 1.4 !important;
+    margin-bottom: 20px !important;
+    line-height: 1.45 !important;
+    max-width: 480px !important;
+    text-wrap: balance !important;
     padding: 0 4px !important;
   }
 
@@ -408,7 +456,7 @@
     gap: 10px !important;
     width: 100% !important;
     max-width: 360px !important;
-    margin: 22px auto 0 auto !important;
+    margin: 0 auto !important;
     position: static !important;
     transform: none !important;
   }
@@ -436,60 +484,96 @@
     height: 16px;
   }
 
-  /* Grids on Mobile */
+  /* 6. Grids across all pages on Mobile */
   .pillars-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
-    contain: layout paint !important;
   }
 
   .pillar-card {
-    padding: 18px 12px !important;
-    border-radius: 18px !important;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
     gap: 10px !important;
-    background: #FFFFFF !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
-    transition: none !important;
-    transform: none !important;
-    will-change: auto !important;
-    contain: content !important;
-    content-visibility: auto !important;
+    min-width: 0 !important;
   }
 
   .pillar-card .app-icon-squircle {
-    width: 42px !important;
-    height: 42px !important;
-    border-radius: 12px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
   }
 
   .pillar-card .app-icon-squircle svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .pillar-card h3 {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     line-height: 1.25 !important;
   }
 
   .pillar-card p {
-    font-size: 11.5px !important;
+    font-size: 11px !important;
     line-height: 1.4 !important;
-    padding: 8px 8px !important;
-    border-radius: 10px !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
     background: #F8FAFC !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(226, 232, 240, 0.7) !important;
-    box-shadow: none !important;
   }
 
-  .services-grid {
+  .services-grid,
+  .industries-grid,
+  .why-us-grid,
+  .about-what-we-do-grid,
+  .about-approach-grid,
+  .about-mission-grid,
+  .about-values-grid,
+  .testimonials-grid,
+  .contact-grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .industry-card {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+    min-width: 0 !important;
+  }
+
+  .industry-headline {
+    font-size: 1.15rem !important;
+  }
+
+  .industry-desc {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .industry-tags-cloud {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .industry-tag-pill {
+    font-size: 11.5px !important;
+    padding: 4px 10px !important;
+  }
+
+  .industry-local-box {
+    border-radius: 18px !important;
+    padding: 16px 14px !important;
+    margin-top: 28px !important;
+  }
+
+  .industry-local-box p {
+    font-size: 12.5px !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
   }
 
   .what-we-build-grid {
@@ -501,22 +585,16 @@
   .showcase-glass-card {
     padding: 20px 16px !important;
     border-radius: 18px !important;
-    background: #FFFFFF !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
-    contain: content !important;
-    content-visibility: auto !important;
   }
 
   .what-we-build-card {
-    padding: 15px 12px 13px 12px !important;
-    border-radius: 18px !important;
+    padding: 14px 12px 12px 12px !important;
+    border-radius: 16px !important;
     gap: 8px !important;
     text-decoration: none !important;
     display: flex !important;
     flex-direction: column !important;
+    min-width: 0 !important;
   }
 
   .what-we-build-card .app-icon-squircle {
@@ -562,8 +640,8 @@
   }
 
   .service-detail-card {
-    padding: 24px 18px !important;
-    gap: 20px !important;
+    padding: 22px 16px !important;
+    gap: 18px !important;
   }
 
   .service-offer-grid {
@@ -577,50 +655,39 @@
   }
 
   .why-choose-cards-stack {
-    margin-top: 18px !important;
+    margin-top: 16px !important;
     gap: 9px !important;
-    contain: layout paint !important;
   }
 
   .why-choose-row-card {
-    padding: 12px 14px !important;
-    gap: 12px !important;
+    padding: 12px 12px !important;
+    gap: 10px !important;
     border-radius: 14px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    background: #FFFFFF !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
-    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04) !important;
-    transition: none !important;
-    transform: none !important;
-    will-change: auto !important;
-    contain: content !important;
-    content-visibility: auto !important;
-    contain-intrinsic-size: 0 58px !important;
+    min-width: 0 !important;
   }
 
   .why-choose-card-left {
-    gap: 10px !important;
+    gap: 8px !important;
     flex-shrink: 0 !important;
   }
 
   .why-choose-card-num {
-    font-size: 12.5px !important;
-    min-width: 18px !important;
+    font-size: 12px !important;
+    min-width: 16px !important;
   }
 
   .why-choose-card-icon {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 8px !important;
   }
 
   .why-choose-card-icon svg {
-    width: 17px !important;
-    height: 17px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .why-choose-card-body {
@@ -630,12 +697,12 @@
   }
 
   .why-choose-card-body h3 {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     line-height: 1.25 !important;
   }
 
   .why-choose-card-body p {
-    font-size: 11.5px !important;
+    font-size: 11px !important;
     line-height: 1.35 !important;
     color: #475569 !important;
   }
@@ -647,8 +714,8 @@
   }
 
   .why-choose-card-arrow svg {
-    width: 15px !important;
-    height: 15px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .why-choose-grid {
@@ -657,9 +724,9 @@
   }
 
   .why-choose-card {
-    padding: 20px 18px !important;
+    padding: 20px 16px !important;
     gap: 10px !important;
-    border-radius: 18px !important;
+    border-radius: 16px !important;
   }
 
   .why-choose-card h3 {
@@ -696,72 +763,83 @@
     padding: 8px 10px !important;
   }
 
+  /* Form Responsive */
   .form-row-2 {
-    grid-template-columns: 1fr;
-    gap: 0;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .form-group {
+    margin-bottom: 14px !important;
+  }
+
+  .form-control,
+  input.form-control,
+  select.form-control,
+  textarea.form-control {
+    font-size: 15px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .trust-metrics-card {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 16px 12px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .trust-metric-pill {
+    padding: 14px 8px !important;
+  }
+
+  .trust-metric-pill h3 {
+    font-size: 1.65rem !important;
+  }
+
+  .trust-metric-pill p {
+    font-size: 11px !important;
   }
 
   .value-strip-card {
     grid-template-columns: 1fr !important;
     padding: 14px !important;
     gap: 10px !important;
-    background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03) !important;
-    contain: layout paint !important;
   }
 
   .value-strip-item {
-    padding: 14px 14px !important;
-    background: #FFFFFF !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
-    border: 1px solid rgba(226, 232, 240, 0.8) !important;
-    transition: none !important;
-    transform: none !important;
-    will-change: auto !important;
-    contain: content !important;
-    content-visibility: auto !important;
+    padding: 12px 12px !important;
   }
 
   .value-strip-label {
-    font-size: 12px !important;
-    margin-bottom: 0 !important;
+    font-size: 11.5px !important;
   }
 
   .value-strip-desc {
-    font-size: 12.5px !important;
+    font-size: 12px !important;
     line-height: 1.4 !important;
   }
 
   .cta-banner-glass {
-    padding: 28px 18px !important;
-    background: #FFFFFF !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
-    border: 1px solid rgba(226, 232, 240, 0.9) !important;
-    contain: content !important;
+    padding: 24px 16px !important;
+    border-radius: 18px !important;
   }
 
   .cta-title {
-    font-size: 1.55rem !important;
+    font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
     line-height: 1.25 !important;
     margin-bottom: 8px !important;
   }
 
   .cta-desc {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     line-height: 1.5 !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 16px !important;
   }
 
   .cta-actions {
@@ -778,7 +856,7 @@
   .cta-process-steps {
     flex-direction: column !important;
     gap: 6px !important;
-    margin-top: 20px !important;
+    margin-top: 18px !important;
   }
 
   .cta-step-divider {
@@ -789,7 +867,7 @@
     flex-direction: column !important;
     gap: 8px !important;
     width: 100% !important;
-    margin-top: 16px !important;
+    margin-top: 14px !important;
   }
 
   .cta-contact-pill {
@@ -798,33 +876,102 @@
   }
 
   .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
   }
 
-  .pos-category-bar {
-    overflow-x: auto;
-    padding-bottom: 6px;
-    flex-wrap: nowrap;
+  /* Simulators on Mobile */
+  .simulator-wrapper {
+    border-radius: 16px !important;
+    margin: 0 !important;
+    width: 100% !important;
   }
 
-  .pos-items-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+  .sim-carousel-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
   }
 
-  .pos-item-card {
-    padding: 10px 8px;
+  .sim-active-info {
+    width: 100% !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .sim-active-title {
+    font-size: 13.5px !important;
+  }
+
+  .sim-carousel-controls {
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   .sim-view-panel {
-    padding: 12px !important;
+    padding: 14px 10px !important;
   }
 
-  /* WhatsApp Simulator Mobile Polish */
+  .pos-terminal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .pos-category-bar {
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+
+  .pos-category-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .pos-cat-btn {
+    flex-shrink: 0 !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+  }
+
+  .pos-items-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    max-height: 320px !important;
+  }
+
+  .pos-item-card {
+    padding: 10px 6px !important;
+    border-radius: 12px !important;
+  }
+
+  .pos-cart-panel {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .erp-kanban-board {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .kanban-col {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  /* WhatsApp Simulator Mobile */
   .wa-simulator-container {
     height: 480px !important;
+    max-height: 75vh !important;
     border-radius: 16px !important;
+    width: 100% !important;
   }
 
   .wa-chat-header {
@@ -862,12 +1009,12 @@
   }
 
   .wa-quick-chips {
-    padding: 6px 10px !important;
+    padding: 6px 8px !important;
     gap: 6px !important;
   }
 
   .wa-chip-btn {
-    padding: 5px 11px !important;
+    padding: 5px 10px !important;
     font-size: 11px !important;
   }
 
@@ -897,40 +1044,52 @@
     height: 15px !important;
   }
 
-  /* Floating WhatsApp on Mobile */
+  /* Floating Buttons */
   .floating-whatsapp-btn {
-    bottom: 20px !important;
-    right: 18px !important;
-    width: 52px !important;
-    height: 52px !important;
+    bottom: 18px !important;
+    right: 16px !important;
+    width: 50px !important;
+    height: 50px !important;
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45) !important;
   }
 
   .floating-whatsapp-btn svg {
-    width: 27px !important;
-    height: 27px !important;
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .back-to-top-btn {
+    bottom: 74px !important;
+    right: 16px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 }
 
 /* Small Phones (Max 480px) */
 @media (max-width: 480px) {
+  :root {
+    --container-padding: 14px;
+  }
+
   .hero-title {
-    font-size: clamp(1.55rem, 6.4vw, 1.85rem) !important;
-    line-height: 1.22 !important;
+    font-size: clamp(1.45rem, 6.2vw, 1.85rem) !important;
+    line-height: 1.2 !important;
   }
 
   .section-title {
-    font-size: 1.55rem;
+    font-size: clamp(1.35rem, 5.5vw, 1.65rem) !important;
+    line-height: 1.25 !important;
   }
 
   .hero-actions {
-    gap: 10px !important;
+    gap: 8px !important;
     width: 100% !important;
   }
 
   .hero-actions .btn {
-    min-height: 48px !important;
-    padding: 12px 18px !important;
+    min-height: 46px !important;
+    padding: 12px 16px !important;
     font-size: 13px !important;
   }
 
@@ -943,7 +1102,7 @@
   }
 
   .pillar-card h3 {
-    font-size: 13px !important;
+    font-size: 12.5px !important;
   }
 
   .pillar-card p {
@@ -951,11 +1110,112 @@
   }
 
   .pos-items-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
   }
 
   .pos-item-card {
-    padding: 10px 6px;
+    padding: 8px 4px !important;
+  }
+
+  .pos-item-name {
+    font-size: 11px !important;
+  }
+
+  .pos-item-price {
+    font-size: 10px !important;
+  }
+
+  .trust-metrics-card {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 14px 10px !important;
+  }
+
+  .trust-metric-pill h3 {
+    font-size: 1.45rem !important;
+  }
+
+  .trust-metric-pill p {
+    font-size: 10.5px !important;
+  }
+}
+
+/* Ultra-Compact Screens (Max 360px: 320px - 360px widths) */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 10px;
+    --header-height: 60px;
+  }
+
+  .brand-name {
+    font-size: 13px !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .brand-tag {
+    font-size: 7.5px !important;
+  }
+
+  .logo-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .logo-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .hero-title {
+    font-size: 1.35rem !important;
+  }
+
+  .hero-desc {
+    font-size: 12px !important;
+  }
+
+  .hero-badge {
+    font-size: 10px !important;
+    padding: 4px 10px !important;
+  }
+
+  .pillars-grid,
+  .what-we-build-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .trust-metrics-card {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .pos-items-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-offer-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cta-banner-glass {
+    padding: 18px 12px !important;
+  }
+
+  .cta-title {
+    font-size: 1.25rem !important;
+  }
+
+  .floating-whatsapp-btn {
+    bottom: 14px !important;
+    right: 12px !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .floating-whatsapp-btn svg {
+    width: 22px !important;
+    height: 22px !important;
   }
 }
