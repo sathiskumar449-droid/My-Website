@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileMenu();
+  initNavDropdown();
   initActiveNavLink();
   initHeroTyping();
   initCostCalculator();
@@ -36,7 +37,9 @@ function initActiveNavLink() {
 
   navLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
-    if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
+    if (!linkHref) return;
+    const baseHref = linkHref.split('#')[0].split('?')[0];
+    if (baseHref === currentPath || (currentPath === '' && baseHref === 'index.html')) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');
@@ -63,10 +66,69 @@ function initMobileMenu() {
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
+      // Don't close mobile drawer if clicking the dropdown accordion toggle on mobile
+      if (link.classList.contains('dropdown-toggle') && window.innerWidth <= 768) {
+        return;
+      }
       toggleBtn.classList.remove('open');
       navMenu.classList.remove('open');
       toggleBtn.innerHTML = hamburgerSvg;
       document.body.style.overflow = '';
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Services Navigation Dropdown (Desktop Hover/Click & Mobile Accordion)
+   -------------------------------------------------------------------------- */
+function initNavDropdown() {
+  const dropdownContainers = document.querySelectorAll('.nav-item-dropdown');
+
+  dropdownContainers.forEach(container => {
+    const toggle = container.querySelector('.dropdown-toggle');
+    const menu = container.querySelector('.nav-dropdown-menu');
+    if (!toggle || !menu) return;
+
+    // Mobile accordion click handler
+    toggle.addEventListener('click', (e) => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        e.preventDefault();
+        const isOpen = container.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    });
+
+    // Close on click outside (for desktop & tablet)
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target)) {
+        container.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Keyboard support: Escape closes dropdown
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        container.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+  });
+
+  // Close mobile navigation drawer when clicking any item inside dropdown
+  const dropdownLinks = document.querySelectorAll('.nav-dropdown-menu a');
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const toggleBtn = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      if (toggleBtn && navMenu) {
+        toggleBtn.classList.remove('open');
+        navMenu.classList.remove('open');
+        toggleBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+        document.body.style.overflow = '';
+      }
     });
   });
 }

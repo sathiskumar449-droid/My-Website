@@ -241,6 +241,77 @@
     box-shadow: 0 4px 14px rgba(224, 83, 56, 0.35) !important;
   }
 
+  /* Mobile Navigation Dropdown Accordion */
+  .nav-item-dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-item-dropdown .dropdown-toggle {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-item-dropdown .dropdown-chevron {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 16px;
+  }
+
+  .nav-dropdown-menu {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 6px !important;
+    margin-top: 0 !important;
+    border-radius: 14px !important;
+    border: 1px solid transparent !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, padding 0.25s ease, border-color 0.25s ease, visibility 0.25s !important;
+    pointer-events: none;
+  }
+
+  .nav-item-dropdown.is-open .nav-dropdown-menu {
+    max-height: 480px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    padding: 10px 6px !important;
+    margin-top: 6px !important;
+    border-color: rgba(224, 83, 56, 0.2) !important;
+    overflow-y: auto;
+  }
+
+  .dropdown-grid {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+
+  .dropdown-item {
+    padding: 8px 10px !important;
+    background: rgba(254, 243, 239, 0.4) !important;
+    border-radius: 10px !important;
+  }
+
+  .dropdown-item-desc {
+    white-space: normal !important;
+  }
+
   /* 5. Clean Section Spacing */
   .section {
     padding: 45px 0;

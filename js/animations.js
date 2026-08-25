@@ -394,7 +394,7 @@ function initScrollReveal() {
 }
 
 /* --------------------------------------------------------------------------
-   Animated Statistics Counter (99.8%, 45+, <300ms, 24/7 with Smooth Ease-Out)
+   Animated Statistics Counter (99.8%, <300ms, 24/7 with Smooth Ease-Out)
    -------------------------------------------------------------------------- */
 function initStatCounters() {
   const statsSection = document.querySelector('.trust-metrics-card');
@@ -405,7 +405,7 @@ function initStatCounters() {
   if (isMobile) {
     // Show final values immediately, no animation
     const h3s = statsSection.querySelectorAll('.trust-metric-pill h3');
-    const finals = ['99.8%', '45+', '<300ms', '24/7'];
+    const finals = ['99.8%', '<300ms', '24/7'];
     h3s.forEach((el, i) => { if (finals[i]) el.textContent = finals[i]; });
     return;
   }
@@ -420,9 +420,8 @@ function initStatCounters() {
 
   const statsConfig = [
     { el: statItems[0]?.querySelector('h3'), start: 0, target: 99.8, decimals: 1, prefix: '', suffix: '%' },
-    { el: statItems[1]?.querySelector('h3'), start: 0, target: 45, decimals: 0, prefix: '', suffix: '+' },
-    { el: statItems[2]?.querySelector('h3'), start: 0, target: 300, decimals: 0, prefix: '<', suffix: 'ms' },
-    { el: statItems[3]?.querySelector('h3'), isRatio: true, target1: 24, target2: 7 }
+    { el: statItems[1]?.querySelector('h3'), start: 0, target: 300, decimals: 0, prefix: '<', suffix: 'ms' },
+    { el: statItems[2]?.querySelector('h3'), isRatio: true, target1: 24, target2: 7 }
   ];
 
   let animated = false;
@@ -466,9 +465,8 @@ function initStatCounters() {
           } else {
             // Guarantee precise final numbers
             if (statsConfig[0].el) statsConfig[0].el.textContent = '99.8%';
-            if (statsConfig[1].el) statsConfig[1].el.textContent = '45+';
-            if (statsConfig[2].el) statsConfig[2].el.textContent = '<300ms';
-            if (statsConfig[3].el) statsConfig[3].el.textContent = '24/7';
+            if (statsConfig[1].el) statsConfig[1].el.textContent = '<300ms';
+            if (statsConfig[2].el) statsConfig[2].el.textContent = '24/7';
           }
         }
 
