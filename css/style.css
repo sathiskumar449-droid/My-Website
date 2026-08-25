@@ -681,6 +681,10 @@
   max-width: 980px;
 }
 
+.desktop-br {
+  display: inline;
+}
+
 .hero-typed-container {
   margin-top: 2px;
   margin-bottom: 24px;
