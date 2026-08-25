@@ -43,6 +43,67 @@
   :root {
     --header-height: 68px;
     --container-padding: 16px;
+    /* Override card bg tokens to solid colors on mobile */
+    --bg-card:           #FFFFFF;
+    --bg-card-hover:     #FFFFFF;
+    --bg-glass:          #FFFFFF;
+    --bg-glass-heavy:    #FFFFFF;
+    --ios-glass-bg:      #FFFFFF;
+    --ios-glass-bg-hover:#FFFFFF;
+  }
+
+  /* ── Kill ALL backdrop-filter on mobile (single universal override) ── */
+  /* This eliminates ALL glass blur rendering cost \u2014 biggest scroll jank source */
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* ── Solid warm card colors to replace transparent glass ── */
+  /* Primary cards \u2014 pure white with a very subtle warm tint */
+  .service-card,
+  .tilt-card,
+  .pillar-card,
+  .why-choose-card,
+  .what-we-build-card,
+  .trust-metric-pill,
+  .trust-metrics-card,
+  .interactive-card,
+  .process-step-card,
+  .value-card,
+  .mission-card,
+  .vision-card,
+  .contact-card,
+  .showcase-card,
+  .cta-banner-glass,
+  .about-intro-box,
+  .service-detail-header,
+  .hero-badge,
+  .section-badge,
+  .stat-pill,
+  .pos-item-card,
+  .pillar-icon-wrap,
+  [class*="-card"],
+  [class*="-pill"],
+  [class*="-glass"],
+  [class*="-badge"] {
+    background: #FFFFFF !important;
+    border-color: rgba(224, 83, 56, 0.12) !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  /* Nav menu uses slightly warm tint to match background */
+  .nav-menu {
+    background: #FFF6F0 !important;
+  }
+
+  /* Navbar uses clean white */
+  .navbar,
+  .navbar.scrolled {
+    background: #FFFFFF !important;
+    box-shadow: 0 1px 8px rgba(15, 23, 42, 0.08) !important;
   }
 
   .section {
