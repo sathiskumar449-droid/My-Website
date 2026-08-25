@@ -26,6 +26,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .why-choose-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
   .why-choose-nexa-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -502,6 +507,26 @@
   .service-offer-item {
     font-size: 12px !important;
     padding: 8px 10px !important;
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .why-choose-card {
+    padding: 20px 18px !important;
+    gap: 10px !important;
+    border-radius: 18px !important;
+  }
+
+  .why-choose-card h3 {
+    font-size: 15px !important;
+  }
+
+  .why-choose-card p {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
   }
 
   .why-choose-item {
