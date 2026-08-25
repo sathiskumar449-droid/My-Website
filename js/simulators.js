@@ -260,100 +260,87 @@ function renderPosCart() {
 }
 
 /* --------------------------------------------------------------------------
-   Thermal Invoice Modal & Thermal Receipt Generator
+   Thermal Invoice Modal & GST Receipt Generator
    -------------------------------------------------------------------------- */
 function initInvoiceModal() {
   const genBtn = document.getElementById('generate-invoice-btn');
   if (genBtn) {
     genBtn.addEventListener('click', generateThermalReceipt);
   }
+
+  const modal = document.getElementById('invoice-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeInvoiceModal();
+      }
+    });
+  }
+
+  const closeBtn = document.getElementById('modal-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeInvoiceModal);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeInvoiceModal();
+    }
+  });
 }
 
 function generateThermalReceipt() {
   if (cart.length === 0) {
-    alert('Please add at least one item to cart before generating invoice.');
+    alert('Please add at least one item to the cart first.');
     return;
   }
 
   const modal = document.getElementById('invoice-modal');
-  const receiptContainer = document.getElementById('invoice-receipt-content');
-  if (!modal || !receiptContainer) return;
+  const itemsBody = document.getElementById('invoice-items-body');
+  if (!modal || !itemsBody) return;
 
   const now = new Date();
-  const invoiceNo = 'INV-' + Math.floor(100000 + Math.random() * 900000);
+  const invoiceNo = 'INV-2026-' + Math.floor(1000 + Math.random() * 9000);
   const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-  const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
   let subtotal = 0;
   let totalTax = 0;
 
-  const itemsHtml = cart.map((item, index) => {
+  itemsBody.innerHTML = cart.map(item => {
     const itemTotal = item.price * item.qty;
     const tax = (itemTotal * item.gstRate) / 100;
     subtotal += itemTotal;
     totalTax += tax;
 
     return `
-      <div class="receipt-row">
-        <span>${index + 1}. ${item.name.substring(0, 18)}</span>
-        <span>₹${itemTotal.toFixed(2)}</span>
-      </div>
-      <div class="receipt-row" style="font-size:10.5px;color:#64748B;">
-        <span>   Qty: ${item.qty} × ₹${item.price} (GST ${item.gstRate}%)</span>
-        <span>HSN:${item.hsn || '0000'}</span>
-      </div>
+      <tr>
+        <td>
+          <strong style="color:#0F172A;font-size:12.5px;">${item.name}</strong>
+          <div style="font-size:10.5px;color:#64748B;font-family:var(--font-mono);margin-top:2px;">HSN: ${item.hsn || '0000'} | GST: ${item.gstRate}%</div>
+        </td>
+        <td style="text-align:center;font-weight:700;font-size:13px;">${item.qty}</td>
+        <td style="text-align:right;font-family:var(--font-mono);font-size:12px;">₹${item.price.toFixed(2)}</td>
+        <td style="text-align:right;font-family:var(--font-mono);font-weight:700;font-size:12.5px;color:var(--terracotta-deep);">₹${itemTotal.toFixed(2)}</td>
+      </tr>
     `;
   }).join('');
 
   const halfTax = totalTax / 2;
   const grandTotal = subtotal + totalTax;
 
-  receiptContainer.innerHTML = `
-    <div class="receipt-header">
-      <h3 style="font-weight:800;letter-spacing:1px;">NEXAVERSE RETAIL DEMO</h3>
-      <p>128 Tech Horizon Park, Chennai</p>
-      <p>GSTIN: 33AAAAA0000A1Z5 | PH: +91 98765 43210</p>
-      <div class="receipt-divider"></div>
-      <div class="receipt-row">
-        <span>Bill: <strong>${invoiceNo}</strong></span>
-        <span>${dateStr} ${timeStr}</span>
-      </div>
-    </div>
+  const invNumEl = document.getElementById('inv-number');
+  const invDateEl = document.getElementById('inv-date');
+  const invSubtotalEl = document.getElementById('inv-subtotal');
+  const invCgstEl = document.getElementById('inv-cgst');
+  const invSgstEl = document.getElementById('inv-sgst');
+  const invGrandtotalEl = document.getElementById('inv-grandtotal');
 
-    <div style="margin: 10px 0;">
-      <div class="receipt-row" style="font-weight:bold;border-bottom:1px solid #CBD5E1;padding-bottom:4px;">
-        <span>ITEM DESCRIPTION</span>
-        <span>AMOUNT</span>
-      </div>
-      ${itemsHtml}
-    </div>
-
-    <div class="receipt-divider"></div>
-
-    <div class="receipt-row">
-      <span>Subtotal (Excl. Tax)</span>
-      <span>₹${subtotal.toFixed(2)}</span>
-    </div>
-    <div class="receipt-row">
-      <span>CGST Total</span>
-      <span>₹${halfTax.toFixed(2)}</span>
-    </div>
-    <div class="receipt-row">
-      <span>SGST Total</span>
-      <span>₹${halfTax.toFixed(2)}</span>
-    </div>
-    <div class="receipt-divider"></div>
-    <div class="receipt-row" style="font-size:14px;font-weight:bold;color:#0F172A;">
-      <span>NET PAYABLE</span>
-      <span>₹${grandTotal.toFixed(2)}</span>
-    </div>
-
-    <div class="receipt-divider"></div>
-    <div style="text-align:center;font-size:10.5px;color:#64748B;margin-top:8px;">
-      Thank You! Visit Again.<br>
-      *** Engineered by NexaVerse Studio ***
-    </div>
-  `;
+  if (invNumEl) invNumEl.textContent = invoiceNo;
+  if (invDateEl) invDateEl.textContent = dateStr;
+  if (invSubtotalEl) invSubtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+  if (invCgstEl) invCgstEl.textContent = `₹${halfTax.toFixed(2)}`;
+  if (invSgstEl) invSgstEl.textContent = `₹${halfTax.toFixed(2)}`;
+  if (invGrandtotalEl) invGrandtotalEl.textContent = `₹${grandTotal.toFixed(2)}`;
 
   modal.classList.add('open');
 }
@@ -363,7 +350,7 @@ window.closeInvoiceModal = function() {
   if (modal) modal.classList.remove('open');
 };
 
-window.printReceipt = function() {
+window.printInvoice = function() {
   window.print();
 };
 

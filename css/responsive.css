@@ -433,6 +433,31 @@
     padding: 8px 10px !important;
   }
 
+  .why-choose-item {
+    gap: 12px !important;
+    padding: 14px 14px !important;
+  }
+
+  .why-choose-item .app-icon-squircle {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+  }
+
+  .why-choose-item .app-icon-squircle svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .why-choose-body h4 {
+    font-size: 14px !important;
+  }
+
+  .why-choose-body p {
+    font-size: 11.5px !important;
+    padding: 8px 10px !important;
+  }
+
   .form-row-2 {
     grid-template-columns: 1fr;
     gap: 0;
