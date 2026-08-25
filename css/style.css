@@ -686,11 +686,40 @@
   margin: 0;
 }
 
+.card-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--terracotta-primary);
+  margin-top: auto;
+  padding-top: 4px;
+  text-decoration: none;
+  transition: transform 0.2s ease, gap 0.2s ease;
+}
+
+.card-see-more svg {
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .what-we-build-card:hover .card-see-more {
+    gap: 8px;
+    color: var(--terracotta-deep);
+  }
+
+  .what-we-build-card:hover .card-see-more svg {
+    transform: translateX(3px);
+  }
+}
+
 /* --------------------------------------------------------------------------
    What We Build Interactive Service Detail View
    -------------------------------------------------------------------------- */
 .what-we-build-card {
-  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .service-detail-wrapper {

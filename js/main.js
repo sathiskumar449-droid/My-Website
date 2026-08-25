@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNavLink();
   initHeroTyping();
   initCostCalculator();
-  initWhatWeBuildNav();
   initSmoothAnchorScroll();
+  handlePageLoadHash();
 });
 
 /* --------------------------------------------------------------------------
@@ -542,18 +542,18 @@ function initWhatWeBuildNav() {
 }
 
 /* --------------------------------------------------------------------------
-   Smooth Anchor Scrolling with Fixed Header Offset
+   Smooth Anchor Scrolling with Fixed Header Offset & Hash Routing
    -------------------------------------------------------------------------- */
 function initSmoothAnchorScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-      if (!targetId || targetId === '#' || targetId.startsWith('#service-')) return;
+      if (!targetId || targetId === '#') return;
       
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
-        const headerOffset = 80;
+        const headerOffset = 90;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -564,4 +564,31 @@ function initSmoothAnchorScroll() {
       }
     });
   });
+}
+
+function handlePageLoadHash() {
+  if (window.location.hash) {
+    const targetEl = document.querySelector(window.location.hash);
+    if (targetEl) {
+      setTimeout(() => {
+        const headerOffset = 90;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Add a subtle highlight flash to show the exact service card
+        targetEl.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+        targetEl.style.borderColor = 'var(--terracotta-primary)';
+        targetEl.style.boxShadow = '0 0 0 2px rgba(224, 83, 56, 0.4)';
+        setTimeout(() => {
+          targetEl.style.boxShadow = '';
+          targetEl.style.borderColor = '';
+        }, 2200);
+      }, 150);
+    }
+  }
 }
