@@ -325,10 +325,10 @@ window.printInvoice = function() {
    WhatsApp AI Chatbot Simulation Engine
    -------------------------------------------------------------------------- */
 const WA_RESPONSES = {
-  'hi': "👋 Hello! Welcome to NexaVerse Studio. How can we elevate your business today?",
-  'hello': "👋 Hey there! Welcome to NexaVerse Studio. Feel free to explore our services or ask for pricing!",
+  'hi': "👋 Hello! Welcome to VANQUR Studio. How can we elevate your business today?",
+  'hello': "👋 Hey there! Welcome to VANQUR Studio. Feel free to explore our services or ask for pricing!",
   'price': "💰 **Project Estimates:**\n• Modern Websites: ₹15,000 - ₹35,000\n• POS & GST Billing: ₹24,000 - ₹55,000\n• ERP / Custom SaaS: ₹45,000+\n• WhatsApp AI Bot: ₹18,000\nWould you like a formal quote for your business?",
-  'pos': "🛒 **NexaVerse Smart POS:**\n• High-speed billing & thermal printing\n• Barcode scanning & live inventory\n• GST invoice generation with HSN codes\n• Works 100% offline & syncs to cloud!",
+  'pos': "🛒 **VANQUR Smart POS:**\n• High-speed billing & thermal printing\n• Barcode scanning & live inventory\n• GST invoice generation with HSN codes\n• Works 100% offline & syncs to cloud!",
   'web': "🌐 **Custom Web Development:**\n• Lightning-fast load times (< 0.8s)\n• SEO-optimized & mobile-first UI\n• E-commerce & secure payment gateways\n• Built on modern tech stack.",
   'timeline': "⚡ **Delivery Timeline:**\n• Landing Pages: 2 - 4 business days\n• Full Websites / POS: 1 - 2 weeks\n• Custom ERP / SaaS: 3 - 6 weeks\nWe offer milestone tracking & daily progress updates!",
   'whatsapp': "📱 **WhatsApp AI Commerce Bot:**\n• Automatic product catalog & ordering\n• Instant FAQ answering & lead capture\n• Payment links & order status alerts\n• Cloud API integration with your DB!",
@@ -344,7 +344,7 @@ function initWhatsAppBot() {
 
   container.innerHTML = `
     <div class="wa-bubble bot">
-      👋 Hello! Welcome to <strong>NexaVerse Software Studio</strong>. I am your AI Business Assistant.<br><br>
+      👋 Hello! Welcome to <strong>VANQUR Software Studio</strong>. I am your AI Business Assistant.<br><br>
       How can I assist your business growth today?
       <span class="wa-bubble-time">${timeStr}</span>
     </div>

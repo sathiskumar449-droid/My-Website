@@ -187,7 +187,7 @@ function sendQuoteToWhatsApp() {
     `*Add-on Features:*%0A${selectedAddonsText}%0A%0A` +
     `*Estimated Budget:* ${priceText}%0A` +
     `*Estimated Timeline:* ${timelineText}%0A%0A` +
-    `_Hello Nexaverse Team, I would like to discuss this project requirements and get started._`;
+    `_Hello VANQUR Team, I would like to discuss this project requirements and get started._`;
 
   // Default contact phone number (customizable by client)
   const phone = '919876543210'; 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANIMATIONS.JS - NEXAVERSE 3D PLEXUS & MOTION ORCHESTRATION
+   ANIMATIONS.JS - VANQUR 3D PLEXUS & MOTION ORCHESTRATION
    Interactive 2D Canvas Plexus, Traveling Energy Sparks, Cursor Glow & 3D Tilt
    ========================================================================== */
 

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   MAIN.JS - NEXAVERSE NEXT-GEN AI & WEB AUTOMATION STUDIO
-   Navigation, Active Link Highlighter, Hero Typing & Cost Calculator Engine
+   MAIN.JS - VANQUR NEXT-GEN AI & WEB AUTOMATION STUDIO
+   Ultra High-Performance Vanilla ES6+ Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
