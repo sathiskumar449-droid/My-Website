@@ -539,6 +539,26 @@
     gap: 16px;
   }
 
+  .value-strip-card {
+    grid-template-columns: 1fr !important;
+    padding: 16px !important;
+    gap: 10px !important;
+  }
+
+  .value-strip-item {
+    padding: 16px 14px !important;
+  }
+
+  .value-strip-label {
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .value-strip-desc {
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+  }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
