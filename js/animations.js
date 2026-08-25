@@ -322,6 +322,22 @@ function initCard3DTilt() {
    Global Scroll Reveal & Staggered Card Pop-Up Observer
    -------------------------------------------------------------------------- */
 function initScrollReveal() {
+  // Skip ALL entrance animations on mobile — they cause compositor layer churn during scroll
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobile) {
+    // Make everything immediately visible — no hidden opacity-0 elements
+    document.querySelectorAll(
+      '.section-header, .pillars-grid, .services-grid, .why-us-grid, ' +
+      '.cta-banner-glass, .page-hero-header, .interactive-card, ' +
+      '.about-intro-box, .sim-category-nav, .sim-view-panel, ' +
+      '.service-card, .tilt-card, .pillar-card'
+    ).forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+
   const revealSelectors = [
     '.section-header',
     '.pillars-grid',
@@ -383,6 +399,16 @@ function initScrollReveal() {
 function initStatCounters() {
   const statsSection = document.querySelector('.trust-metrics-card');
   if (!statsSection) return;
+
+  // Skip rAF counter loop on mobile — competes with scroll for main thread
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobile) {
+    // Show final values immediately, no animation
+    const h3s = statsSection.querySelectorAll('.trust-metric-pill h3');
+    const finals = ['99.8%', '45+', '<300ms', '24/7'];
+    h3s.forEach((el, i) => { if (finals[i]) el.textContent = finals[i]; });
+    return;
+  }
 
   const statItems = statsSection.querySelectorAll('.trust-metric-pill');
   if (!statItems.length) return;

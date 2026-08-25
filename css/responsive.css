@@ -43,17 +43,29 @@
   :root {
     --header-height: 68px;
     --container-padding: 16px;
-    /* Override card bg tokens to solid colors on mobile */
-    --bg-card:           #FFFFFF;
-    --bg-card-hover:     #FFFFFF;
-    --bg-glass:          #FFFFFF;
-    --bg-glass-heavy:    #FFFFFF;
-    --ios-glass-bg:      #FFFFFF;
-    --ios-glass-bg-hover:#FFFFFF;
+    /* Solid color tokens — remove all transparency on mobile */
+    --bg-card:            #FFFFFF;
+    --bg-card-hover:      #FFFFFF;
+    --bg-glass:           #FFFFFF;
+    --bg-glass-heavy:     #FFFFFF;
+    --ios-glass-bg:       #FFFFFF;
+    --ios-glass-bg-hover: #FFFFFF;
   }
 
-  /* ── Kill ALL backdrop-filter on mobile (single universal override) ── */
-  /* This eliminates ALL glass blur rendering cost \u2014 biggest scroll jank source */
+  /* ════════════════════════════════════════════════════════════
+     MOBILE PERFORMANCE MASTER BLOCK
+     Root causes of frame drops on mobile:
+       1. backdrop-filter blur on every card  → repaint every frame
+       2. position:fixed elements (navbar, canvas, bg-rings) → layer repaint
+       3. CSS filter: blur() on bg elements   → GPU overdraw
+       4. transition: all on cards            → triggers layout
+       5. Infinite CSS animations             → constant compositing
+       6. box-shadow on many elements         → paint cost
+       7. Semi-transparent rgba backgrounds   → alpha blending every frame
+       8. IntersectionObserver adding transitions during scroll
+     ════════════════════════════════════════════════════════════ */
+
+  /* ── 1. Kill ALL backdrop-filter globally ── */
   *,
   *::before,
   *::after {
@@ -61,8 +73,23 @@
     -webkit-backdrop-filter: none !important;
   }
 
-  /* ── Solid warm card colors to replace transparent glass ── */
-  /* Primary cards \u2014 pure white with a very subtle warm tint */
+  /* ── 2. Disable ALL continuous CSS animations ── */
+  .bg-neural-glow-1,
+  .badge-pulse-dot,
+  .bg-studio-rings {
+    animation: none !important;
+  }
+
+  /* ── 3. Stop CSS filter: blur on background elements ── */
+  .bg-neural-glow-1 {
+    filter: none !important;
+    display: none !important;
+  }
+  .site-bg-ambient {
+    display: none !important;
+  }
+
+  /* ── 4. Replace transition:all with specific cheap properties ── */
   .service-card,
   .tilt-card,
   .pillar-card,
@@ -108,6 +135,15 @@
 
   .section {
     padding: 50px 0;
+    /* CSS containment — prevents layout from cascading across sections during scroll */
+    contain: layout style;
+  }
+
+  /* Prevent all elements from using transition:all (causes layout on hover) */
+  *,
+  *::before,
+  *::after {
+    transition-property: opacity, transform, color, background-color !important;
   }
 
   .navbar-container {

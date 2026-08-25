@@ -20,13 +20,14 @@ function initNavbarScroll() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
+  // passive:true tells browser "scroll freely, don't wait for JS" → removes 100ms mobile delay
   window.addEventListener('scroll', () => {
     if (window.scrollY > 25) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 }
 
 function initActiveNavLink() {
