@@ -105,12 +105,6 @@
   padding: 0 var(--container-padding);
 }
 
-/* Allow browser to scroll freely \u2014 avoids touch delay on mobile */
-body {
-  touch-action: pan-y;
-  overscroll-behavior-y: none;
-}
-
 .section {
   padding: 90px 0;
   position: relative;
@@ -2292,60 +2286,58 @@ textarea.form-control {
 }
 
 /* --------------------------------------------------------------------------
-   Smooth Scrolling & Global Scroll Reveal Animations (Apple-Grade Easing)
+   Desktop Smooth Scrolling & Scroll Reveal Animations
    -------------------------------------------------------------------------- */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Base Scroll Reveal Classes */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-on-scroll.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered Card Pop-Up & Reveals */
-.reveal-cards .service-card,
-.reveal-cards .tilt-card,
-.reveal-cards .pillar-card,
-.reveal-cards .trust-metric-pill,
-.reveal-card {
-  opacity: 0;
-  transform: translateY(24px) scale(0.97);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-cards.in-view .service-card,
-.reveal-cards.in-view .tilt-card,
-.reveal-cards.in-view .pillar-card,
-.reveal-cards.in-view .trust-metric-pill,
-.reveal-card.in-view {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* Subtle Stagger Sequence (0ms, 100ms, 200ms, 300ms, etc.) */
-.reveal-cards.in-view > *:nth-child(1) { transition-delay: 0.04s; }
-.reveal-cards.in-view > *:nth-child(2) { transition-delay: 0.12s; }
-.reveal-cards.in-view > *:nth-child(3) { transition-delay: 0.20s; }
-.reveal-cards.in-view > *:nth-child(4) { transition-delay: 0.28s; }
-.reveal-cards.in-view > *:nth-child(5) { transition-delay: 0.36s; }
-.reveal-cards.in-view > *:nth-child(6) { transition-delay: 0.44s; }
-.reveal-cards.in-view > *:nth-child(7) { transition-delay: 0.52s; }
-.reveal-cards.in-view > *:nth-child(8) { transition-delay: 0.60s; }
-.reveal-cards.in-view > *:nth-child(9) { transition-delay: 0.68s; }
-.reveal-cards.in-view > *:nth-child(10) { transition-delay: 0.76s; }
-
-/* 2-Column Alternating Reveal (Desktop) */
 @media (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Base Scroll Reveal Classes (Desktop Only) */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered Card Pop-Up & Reveals */
+  .reveal-cards .service-card,
+  .reveal-cards .tilt-card,
+  .reveal-cards .pillar-card,
+  .reveal-cards .trust-metric-pill,
+  .reveal-card {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-cards.in-view .service-card,
+  .reveal-cards.in-view .tilt-card,
+  .reveal-cards.in-view .pillar-card,
+  .reveal-cards.in-view .trust-metric-pill,
+  .reveal-card.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Subtle Stagger Sequence */
+  .reveal-cards.in-view > *:nth-child(1) { transition-delay: 0.04s; }
+  .reveal-cards.in-view > *:nth-child(2) { transition-delay: 0.12s; }
+  .reveal-cards.in-view > *:nth-child(3) { transition-delay: 0.20s; }
+  .reveal-cards.in-view > *:nth-child(4) { transition-delay: 0.28s; }
+  .reveal-cards.in-view > *:nth-child(5) { transition-delay: 0.36s; }
+  .reveal-cards.in-view > *:nth-child(6) { transition-delay: 0.44s; }
+  .reveal-cards.in-view > *:nth-child(7) { transition-delay: 0.52s; }
+  .reveal-cards.in-view > *:nth-child(8) { transition-delay: 0.60s; }
+
+  /* 2-Column Alternating Reveal */
   .reveal-left {
     opacity: 0;
     transform: translateX(-25px);
@@ -2385,5 +2377,6 @@ html {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    will-change: auto !important;
   }
 }

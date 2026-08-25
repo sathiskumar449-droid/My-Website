@@ -125,19 +125,24 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   color-scheme: light;
 }
 
+@media (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   font-family: var(--font-body);
-  background-color: #E8EDF4;
+  background-color: #F8F6F2;
   background-image: 
     radial-gradient(ellipse 90% 70% at 50% -10%, rgba(255, 218, 200, 0.75) 0%, rgba(255, 235, 224, 0.45) 40%, transparent 85%),
-    radial-gradient(ellipse 65% 55% at 50% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(246, 248, 251, 0.92) 50%, rgba(232, 237, 244, 0.85) 100%),
-    linear-gradient(180deg, #FFFFFF 0%, #F6F8FB 25%, #E8EDF4 65%, #D2DBE8 100%);
-  background-attachment: fixed;
+    radial-gradient(ellipse 65% 55% at 50% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(246, 248, 251, 0.92) 50%, rgba(248, 246, 242, 0.85) 100%),
+    linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 25%, #F8F6F2 65%, #EDE8E1 100%);
+  background-attachment: scroll;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;

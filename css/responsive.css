@@ -1,9 +1,9 @@
 /* ==========================================================================
    RESPONSIVE.CSS - NEXAVERSE NEXT-GEN AI & WEB AUTOMATION STUDIO
-   Apple iOS Liquid Glass & VisionOS Mobile Theme
+   Ultra-High-Performance 60FPS/120FPS Mobile Architecture (Zero Scroll Jank)
    ========================================================================== */
 
-/* Tablet & Smaller Screens (Max 1024px) */
+/* Tablet & Medium Screens (Max 1024px) */
 @media (max-width: 1024px) {
   .pos-terminal-grid {
     grid-template-columns: 1fr;
@@ -43,53 +43,31 @@
   :root {
     --header-height: 68px;
     --container-padding: 16px;
-    /* Solid color tokens — remove all transparency on mobile */
-    --bg-card:            #FFFFFF;
-    --bg-card-hover:      #FFFFFF;
-    --bg-glass:           #FFFFFF;
-    --bg-glass-heavy:     #FFFFFF;
-    --ios-glass-bg:       #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
+    --bg-glass: #FFFFFF;
+    --bg-glass-heavy: #FFFFFF;
+    --ios-glass-bg: #FFFFFF;
     --ios-glass-bg-hover: #FFFFFF;
   }
 
-  /* ════════════════════════════════════════════════════════════
-     MOBILE PERFORMANCE MASTER BLOCK
-     Root causes of frame drops on mobile:
-       1. backdrop-filter blur on every card  → repaint every frame
-       2. position:fixed elements (navbar, canvas, bg-rings) → layer repaint
-       3. CSS filter: blur() on bg elements   → GPU overdraw
-       4. transition: all on cards            → triggers layout
-       5. Infinite CSS animations             → constant compositing
-       6. box-shadow on many elements         → paint cost
-       7. Semi-transparent rgba backgrounds   → alpha blending every frame
-       8. IntersectionObserver adding transitions during scroll
-     ════════════════════════════════════════════════════════════ */
-
-  /* ── 1. Kill ALL backdrop-filter globally ── */
-  *,
-  *::before,
-  *::after {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  /* Disable smooth-scroll on touch root to allow 100% native momentum scrolling */
+  html {
+    scroll-behavior: auto !important;
   }
 
-  /* ── 2. Disable ALL continuous CSS animations ── */
+  /* 1. Hide all heavy fixed background & canvas layers completely */
+  .site-bg-ambient,
+  .bg-studio-rings,
   .bg-neural-glow-1,
-  .badge-pulse-dot,
-  .bg-studio-rings {
+  #bg-canvas,
+  #cursor-glow {
+    display: none !important;
     animation: none !important;
-  }
-
-  /* ── 3. Stop CSS filter: blur on background elements ── */
-  .bg-neural-glow-1 {
     filter: none !important;
-    display: none !important;
-  }
-  .site-bg-ambient {
-    display: none !important;
   }
 
-  /* ── 4. Replace transition:all with specific cheap properties ── */
+  /* 2. Zero-overhead solid white cards across ALL pages (Index, About, Services, Simulator, Why-Us, Contact) */
   .service-card,
   .tilt-card,
   .pillar-card,
@@ -103,47 +81,59 @@
   .mission-card,
   .vision-card,
   .contact-card,
+  .contact-info-card,
+  .contact-form-card,
   .showcase-card,
+  .showcase-glass-card,
   .cta-banner-glass,
   .about-intro-box,
+  .service-detail-card,
   .service-detail-header,
   .hero-badge,
   .section-badge,
   .stat-pill,
   .pos-item-card,
-  .pillar-icon-wrap,
-  [class*="-card"],
-  [class*="-pill"],
-  [class*="-glass"],
-  [class*="-badge"] {
+  .pos-cart-panel,
+  .pos-cat-btn,
+  .simulator-wrapper,
+  .kanban-col,
+  .kanban-card,
+  .testimonial-card,
+  .form-control,
+  .footer-card-box,
+  .pillar-icon-wrap {
     background: #FFFFFF !important;
-    border-color: rgba(224, 83, 56, 0.12) !important;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(224, 83, 56, 0.12) !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    opacity: 1 !important;
   }
 
-  /* Nav menu uses slightly warm tint to match background */
-  .nav-menu {
-    background: #FFF6F0 !important;
+  /* 3. Reset all scroll-reveal classes to visible instantly on mobile */
+  .reveal-on-scroll,
+  .reveal-cards,
+  .reveal-card,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
   }
 
-  /* Navbar uses clean white */
+  /* 4. Clean solid Navbar on mobile */
   .navbar,
   .navbar.scrolled {
     background: #FFFFFF !important;
-    box-shadow: 0 1px 8px rgba(15, 23, 42, 0.08) !important;
-  }
-
-  .section {
-    padding: 50px 0;
-    /* CSS containment — prevents layout from cascading across sections during scroll */
-    contain: layout style;
-  }
-
-  /* Prevent all elements from using transition:all (causes layout on hover) */
-  *,
-  *::before,
-  *::after {
-    transition-property: opacity, transform, color, background-color !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(224, 83, 56, 0.15) !important;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+    height: var(--header-height);
   }
 
   .navbar-container {
@@ -159,7 +149,6 @@
     cursor: pointer;
     padding: 6px;
     z-index: 1005;
-    transition: all 0.25s ease;
   }
 
   .nav-toggle.open {
@@ -181,9 +170,9 @@
     width: 82%;
     max-width: 320px;
     height: 100vh;
-    background: rgba(255, 246, 240, 0.98) !important;
-    backdrop-filter: blur(32px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+    background: #FFF6F0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     border-left: 1px solid rgba(224, 83, 56, 0.25) !important;
     border-radius: 0 !important;
     flex-direction: column !important;
@@ -191,9 +180,9 @@
     align-items: stretch !important;
     padding: 80px 24px 40px 24px !important;
     gap: 12px !important;
-    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: right 0.3s ease !important;
     z-index: 1001;
-    box-shadow: -15px 0 45px rgba(224, 83, 56, 0.15) !important;
+    box-shadow: -15px 0 35px rgba(224, 83, 56, 0.12) !important;
   }
 
   .nav-menu.open {
@@ -205,8 +194,8 @@
     padding: 13px 18px !important;
     border-radius: 12px !important;
     text-align: center !important;
-    background: rgba(255, 255, 255, 0.7) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(224, 83, 56, 0.12) !important;
     color: #1E293B !important;
     display: block !important;
   }
@@ -218,8 +207,13 @@
     box-shadow: 0 4px 14px rgba(224, 83, 56, 0.35) !important;
   }
 
+  /* 5. Clean Section Spacing */
+  .section {
+    padding: 45px 0;
+  }
+
   .hero-section {
-    padding: calc(var(--header-height) + 24px) 0 64px 0 !important;
+    padding: calc(var(--header-height) + 24px) 0 55px 0 !important;
   }
 
   .hero-badge {
@@ -243,11 +237,6 @@
     line-height: 1.25 !important;
     display: inline-block !important;
     max-width: 100% !important;
-    overflow-wrap: normal !important;
-    word-break: normal !important;
-    word-wrap: normal !important;
-    hyphens: none !important;
-    white-space: normal !important;
     text-align: center !important;
   }
 
@@ -266,14 +255,14 @@
     line-height: 1.45 !important;
   }
 
-  /* Controlled Normal-Flow Mobile CTA Buttons — Side by Side */
+  /* CTA Buttons — Side by Side */
   .hero-actions {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 10px !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin: 48px auto 0 auto !important;
+    margin: 40px auto 0 auto !important;
     position: static !important;
     transform: none !important;
   }
@@ -297,26 +286,11 @@
     height: 15px;
   }
 
-  /* Sub-Second Performance Value Pillars 2-Column Grid on Mobile */
+  /* Grids on Mobile */
   .pillars-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
-  }
-
-  .service-detail-card {
-    padding: 24px 18px !important;
-    gap: 20px !important;
-  }
-
-  .service-offer-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
-
-  .service-offer-item {
-    font-size: 12px !important;
-    padding: 8px 10px !important;
   }
 
   .pillar-card {
@@ -346,6 +320,7 @@
     line-height: 1.4 !important;
     padding: 8px 8px !important;
     border-radius: 10px !important;
+    background: #F8FAFC !important;
   }
 
   .services-grid {
@@ -353,6 +328,7 @@
   }
 
   .what-we-build-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
   }
@@ -384,6 +360,22 @@
     line-height: 1.4 !important;
     padding: 8px 8px !important;
     border-radius: 10px !important;
+    background: #F8FAFC !important;
+  }
+
+  .service-detail-card {
+    padding: 24px 18px !important;
+    gap: 20px !important;
+  }
+
+  .service-offer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .service-offer-item {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
   }
 
   .form-row-2 {
@@ -409,103 +401,15 @@
 
   .pos-items-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .pos-item-card {
+    padding: 10px 8px;
   }
 
   .sim-view-panel {
     padding: 16px;
-  }
-
-  /* Controlled Mobile Scroll Reveal Animations */
-  .reveal-on-scroll,
-  .reveal-left,
-  .reveal-right {
-    transform: translateY(20px) !important;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  .reveal-on-scroll.in-view,
-  .reveal-left.in-view,
-  .reveal-right.in-view {
-    transform: translateY(0) !important;
-  }
-
-  .reveal-cards .service-card,
-  .reveal-cards .tilt-card,
-  .reveal-cards .pillar-card,
-  .reveal-cards .trust-metric-pill,
-  .reveal-card {
-    transform: translateY(16px) scale(0.98) !important;
-    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  .reveal-cards.in-view .service-card,
-  .reveal-cards.in-view .tilt-card,
-  .reveal-cards.in-view .pillar-card,
-  .reveal-cards.in-view .trust-metric-pill,
-  .reveal-card.in-view {
-    transform: translateY(0) scale(1) !important;
-  }
-
-  /* ── Mobile GPU & Scroll Performance Fixes ───────────────────────── */
-
-  /* Disable will-change to reduce GPU memory pressure on mobile */
-  .reveal-on-scroll,
-  .reveal-cards .service-card,
-  .reveal-cards .tilt-card,
-  .reveal-cards .pillar-card,
-  .reveal-cards .trust-metric-pill,
-  .reveal-card,
-  .reveal-left,
-  .reveal-right {
-    will-change: auto !important;
-  }
-
-  /* Disable scale transforms on mobile \u2014 causes compositor layer issues */
-  .reveal-cards .service-card,
-  .reveal-cards .tilt-card,
-  .reveal-cards .pillar-card,
-  .reveal-cards .trust-metric-pill,
-  .reveal-card {
-    transform: translateY(16px) !important;
-  }
-
-  .reveal-cards.in-view .service-card,
-  .reveal-cards.in-view .tilt-card,
-  .reveal-cards.in-view .pillar-card,
-  .reveal-cards.in-view .trust-metric-pill,
-  .reveal-card.in-view {
-    transform: translateY(0) !important;
-  }
-
-  /* Reduce backdrop-filter cost \u2014 major scroll jank source on Android */
-  .trust-metrics-card {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-  }
-
-  .trust-metric-pill {
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
-  }
-
-  /* Overscroll containment prevents scroll chaining jank */
-  .section {
-    overscroll-behavior: contain;
-  }
-
-  /* Passive touch for smoother scroll on iOS/Android */
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Disable fixed-position heavy background layers on mobile \u2014 biggest frame drop cause */
-  .site-bg-ambient {
-    display: none !important;
-  }
-
-  /* Also ensure solarSunPulse animation doesn't run */
-  .bg-neural-glow-1 {
-    animation: none !important;
   }
 }
 
@@ -524,8 +428,8 @@
   }
 
   .hero-actions .btn {
-    padding: 11px 6px !important;
-    font-size: 11.5px !important;
+    padding: 12px 6px !important;
+    font-size: 12px !important;
   }
 
   .pillars-grid {
