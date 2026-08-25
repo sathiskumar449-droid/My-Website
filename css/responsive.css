@@ -436,14 +436,26 @@
     padding: 0 4px !important;
   }
 
+  .hero-subtext-block {
+    margin-top: 2px !important;
+    margin-bottom: 20px !important;
+    gap: 3px !important;
+    padding: 0 6px !important;
+  }
+
+  .hero-subtext-lead {
+    font-size: 11px !important;
+    letter-spacing: 0.06em !important;
+  }
+
   .hero-industry-subline,
   .hero-subtext {
     font-size: 12px !important;
-    color: #64748B !important;
+    color: #475569 !important;
     font-weight: 500 !important;
     margin-top: 0 !important;
-    margin-bottom: 20px !important;
-    line-height: 1.45 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.5 !important;
     max-width: 480px !important;
     text-wrap: balance !important;
     padding: 0 4px !important;

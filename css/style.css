@@ -751,16 +751,36 @@
   text-wrap: balance;
 }
 
+.hero-subtext-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 26px;
+  max-width: 840px;
+  text-align: center;
+}
+
+.hero-subtext-lead {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+  font-weight: 700;
+  color: var(--terracotta-deep);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .hero-industry-subline,
 .hero-subtext {
-  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  font-size: clamp(0.85rem, 1.05vw, 0.95rem);
   color: #475569;
   font-weight: 500;
   margin-top: 0;
-  margin-bottom: 26px;
-  line-height: 1.5;
+  margin-bottom: 0;
+  line-height: 1.55;
   letter-spacing: 0.01em;
-  max-width: 680px;
+  max-width: 780px;
   text-wrap: balance;
 }
 
