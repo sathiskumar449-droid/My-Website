@@ -657,7 +657,7 @@
 
   .value-strip-label {
     font-size: 12px !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 0 !important;
   }
 
   .value-strip-desc {

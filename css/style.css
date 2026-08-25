@@ -2528,13 +2528,35 @@ textarea.form-control {
   box-shadow: inset 0 1px 1px #FFFFFF, 0 8px 24px rgba(224, 83, 56, 0.08);
 }
 
+.value-strip-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.value-strip-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.value-strip-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
 .value-strip-label {
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--terracotta-primary);
-  margin-bottom: 6px;
+  margin-bottom: 0;
   display: block;
 }
 
