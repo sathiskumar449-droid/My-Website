@@ -18,8 +18,8 @@ function initParticleCanvas() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
 
-  // Skip heavy canvas animation entirely on mobile — prevents frame drops
-  const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  // Skip heavy canvas animation entirely on mobile & tablet — prevents frame drops
+  const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 992 || ('ontouchstart' in window);
   if (isMobileDevice) {
     canvas.style.display = 'none';
     return;
@@ -322,15 +322,15 @@ function initCard3DTilt() {
    Global Scroll Reveal & Staggered Card Pop-Up Observer
    -------------------------------------------------------------------------- */
 function initScrollReveal() {
-  // Skip ALL entrance animations on mobile — they cause compositor layer churn during scroll
-  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  // Skip ALL entrance animations on mobile & tablet — prevents compositor layer churn during scroll
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 992 || ('ontouchstart' in window);
   if (isMobile) {
     // Make everything immediately visible — no hidden opacity-0 elements
     document.querySelectorAll(
       '.section-header, .pillars-grid, .services-grid, .why-us-grid, ' +
       '.cta-banner-glass, .page-hero-header, .interactive-card, ' +
       '.about-intro-box, .sim-category-nav, .sim-view-panel, ' +
-      '.service-card, .tilt-card, .pillar-card'
+      '.service-card, .tilt-card, .pillar-card, .why-choose-row-card'
     ).forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
