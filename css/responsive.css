@@ -410,14 +410,14 @@
     display: none !important;
   }
 
-  .hero-typed-container {
+  .hero-rotating-wrapper {
     margin-top: 0 !important;
-    margin-bottom: 14px !important;
-    min-height: 38px !important;
+    margin-bottom: 6px !important;
+    min-height: 42px !important;
   }
 
-  #typed-service-text {
-    font-size: clamp(1.2rem, 4.8vw, 1.6rem) !important;
+  .hero-rotating-phrase {
+    font-size: clamp(1.35rem, 5.2vw, 1.85rem) !important;
     line-height: 1.25 !important;
     display: inline-block !important;
     max-width: 100% !important;

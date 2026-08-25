@@ -676,7 +676,7 @@
   font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.025em;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
   color: var(--text-primary);
   max-width: 920px;
   text-wrap: balance;
@@ -686,29 +686,59 @@
   display: inline;
 }
 
-.hero-typed-container {
-  margin-top: 2px;
-  margin-bottom: 24px;
+.hero-rotating-wrapper {
   min-height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
 }
 
-#typed-service-text {
+.hero-rotating-phrase {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3.8vw, 3.1rem);
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
+  color: var(--terracotta-primary);
+  background: linear-gradient(135deg, #E05338 0%, #F97316 50%, #EA580C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
   max-width: 100%;
-  overflow-wrap: normal !important;
-  word-break: normal !important;
-  word-wrap: normal !important;
-  hyphens: none !important;
-  white-space: normal !important;
   text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.hero-rotating-phrase.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-rotating-phrase.is-exiting {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.hero-rotating-phrase.is-entering {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotating-phrase {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
 .hero-desc {
@@ -723,11 +753,11 @@
 
 .hero-industry-subline,
 .hero-subtext {
-  font-size: clamp(0.85rem, 1.05vw, 0.95rem);
-  color: #64748B;
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  color: #475569;
   font-weight: 500;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   line-height: 1.5;
   letter-spacing: 0.01em;
   max-width: 680px;

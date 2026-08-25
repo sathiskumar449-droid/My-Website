@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initNavDropdown();
   initActiveNavLink();
-  initHeroTyping();
+  initHeroRotatingHeadline();
   initCostCalculator();
   initSmoothAnchorScroll();
   handlePageLoadHash();
@@ -135,53 +135,52 @@ function initNavDropdown() {
 }
 
 /* --------------------------------------------------------------------------
-   Hero Dynamic Typing Text Effect
+   Hero Rotating Animated Orange Headline
    -------------------------------------------------------------------------- */
-function initHeroTyping() {
-  const typedEl = document.getElementById('typed-service-text');
-  if (!typedEl) return;
+function initHeroRotatingHeadline() {
+  const textEl = document.getElementById('hero-rotating-text');
+  if (!textEl) return;
 
   const phrases = [
-    'Modern Websites',
-    'E-Commerce Platforms',
-    'Web Applications',
-    'Smart POS Systems',
     'AI-Powered Automation',
-    'Business Management Software'
+    'Smart Business Software',
+    'Industrial Digital Solutions',
+    'POS & ERP Systems',
+    'Modern Web Experiences'
   ];
 
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
+  let currentIndex = 0;
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const displayDuration = 2600;
+  const transitionDuration = 450;
 
-  function typeLoop() {
-    const currentPhrase = phrases[phraseIndex];
-
-    if (isDeleting) {
-      const text = currentPhrase.substring(0, charIndex - 1);
-      typedEl.textContent = text.length > 0 ? text : '\u00A0';
-      charIndex--;
-      typingSpeed = 35;
-    } else {
-      typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 85;
+  function rotateToNext() {
+    if (prefersReduced) {
+      currentIndex = (currentIndex + 1) % phrases.length;
+      textEl.textContent = phrases[currentIndex];
+      setTimeout(rotateToNext, displayDuration);
+      return;
     }
 
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      typingSpeed = 2000; // Pause at full word
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      typingSpeed = 400; // Pause before typing new word
-    }
+    textEl.classList.remove('is-visible');
+    textEl.classList.add('is-exiting');
 
-    setTimeout(typeLoop, typingSpeed);
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % phrases.length;
+      textEl.textContent = phrases[currentIndex];
+      textEl.classList.remove('is-exiting');
+      textEl.classList.add('is-entering');
+
+      void textEl.offsetWidth; // Reflow
+
+      textEl.classList.remove('is-entering');
+      textEl.classList.add('is-visible');
+
+      setTimeout(rotateToNext, displayDuration);
+    }, transitionDuration);
   }
 
-  typeLoop();
+  setTimeout(rotateToNext, displayDuration);
 }
 
 /* --------------------------------------------------------------------------
