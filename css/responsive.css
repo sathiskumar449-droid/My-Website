@@ -72,6 +72,8 @@
   .tilt-card,
   .pillar-card,
   .why-choose-card,
+  .why-choose-item,
+  .why-choose-lead-p,
   .what-we-build-card,
   .trust-metric-pill,
   .trust-metrics-card,
@@ -111,6 +113,14 @@
     transition: none !important;
     will-change: auto !important;
     opacity: 1 !important;
+  }
+
+  .why-choose-body p {
+    background: #F8FAFC !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: none !important;
   }
 
   /* 3. Reset all scroll-reveal classes to visible instantly on mobile */
