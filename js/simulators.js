@@ -61,7 +61,6 @@ let cart = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSwipeableSimulators();
   initPosCategoryButtons();
   renderPosCatalog();
   renderPosCart();
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   Swipeable Simulators Carousel & Touch Gesture Controller
+   Simulators Carousel Controller (Button & Indicator Navigation)
    -------------------------------------------------------------------------- */
 let currentSimIndex = 0;
 const SIM_META = [
@@ -78,38 +77,6 @@ const SIM_META = [
   { id: 'erp-panel', title: 'ERP & CRM Kanban Pipeline', icon: '📊' },
   { id: 'whatsapp-bot-panel', title: 'WhatsApp AI Chatbot', icon: '🤖' }
 ];
-
-function initSwipeableSimulators() {
-  const wrappers = document.querySelectorAll('.simulator-wrapper');
-  
-  wrappers.forEach(wrapper => {
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-
-    wrapper.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      
-      const deltaX = touchEndX - touchStartX;
-      const deltaY = touchEndY - touchStartY;
-
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
-        if (deltaX < 0) {
-          nextSimulator();
-        } else {
-          prevSimulator();
-        }
-      }
-    }, { passive: true });
-  });
-}
 
 window.switchSimulator = function(index) {
   if (index < 0) index = SIM_META.length - 1;
