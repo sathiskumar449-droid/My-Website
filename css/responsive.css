@@ -665,6 +665,55 @@
     line-height: 1.4 !important;
   }
 
+  .cta-banner-glass {
+    padding: 28px 18px !important;
+  }
+
+  .cta-title {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cta-desc {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .cta-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .cta-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .cta-process-steps {
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-top: 20px !important;
+  }
+
+  .cta-step-divider {
+    display: none !important;
+  }
+
+  .cta-direct-contact {
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+  }
+
+  .cta-contact-pill {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
