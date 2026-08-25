@@ -105,6 +105,12 @@
   padding: 0 var(--container-padding);
 }
 
+/* Allow browser to scroll freely \u2014 avoids touch delay on mobile */
+body {
+  touch-action: pan-y;
+  overscroll-behavior-y: none;
+}
+
 .section {
   padding: 90px 0;
   position: relative;

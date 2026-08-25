@@ -348,6 +348,68 @@
   .reveal-card.in-view {
     transform: translateY(0) scale(1) !important;
   }
+
+  /* ── Mobile GPU & Scroll Performance Fixes ───────────────────────── */
+
+  /* Disable will-change to reduce GPU memory pressure on mobile */
+  .reveal-on-scroll,
+  .reveal-cards .service-card,
+  .reveal-cards .tilt-card,
+  .reveal-cards .pillar-card,
+  .reveal-cards .trust-metric-pill,
+  .reveal-card,
+  .reveal-left,
+  .reveal-right {
+    will-change: auto !important;
+  }
+
+  /* Disable scale transforms on mobile \u2014 causes compositor layer issues */
+  .reveal-cards .service-card,
+  .reveal-cards .tilt-card,
+  .reveal-cards .pillar-card,
+  .reveal-cards .trust-metric-pill,
+  .reveal-card {
+    transform: translateY(16px) !important;
+  }
+
+  .reveal-cards.in-view .service-card,
+  .reveal-cards.in-view .tilt-card,
+  .reveal-cards.in-view .pillar-card,
+  .reveal-cards.in-view .trust-metric-pill,
+  .reveal-card.in-view {
+    transform: translateY(0) !important;
+  }
+
+  /* Reduce backdrop-filter cost \u2014 major scroll jank source on Android */
+  .trust-metrics-card {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  .trust-metric-pill {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  /* Overscroll containment prevents scroll chaining jank */
+  .section {
+    overscroll-behavior: contain;
+  }
+
+  /* Passive touch for smoother scroll on iOS/Android */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Disable fixed-position heavy background layers on mobile \u2014 biggest frame drop cause */
+  .site-bg-ambient {
+    display: none !important;
+  }
+
+  /* Also ensure solarSunPulse animation doesn't run */
+  .bg-neural-glow-1 {
+    animation: none !important;
+  }
 }
 
 /* Small Phones (Max 480px) */

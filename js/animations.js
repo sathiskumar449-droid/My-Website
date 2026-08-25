@@ -17,11 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
 function initParticleCanvas() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+
+  // Skip heavy canvas animation entirely on mobile — prevents frame drops
+  const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobileDevice) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
   let width, height, dpr;
   let particles = [];
   let sparks = [];
   let mouse = { x: null, y: null, radius: 180, isHovering: false };
+  let animFrameId = null;
+  let isPageVisible = true;
+
+  // Pause canvas when tab is hidden (save battery & CPU)
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    if (isPageVisible && animFrameId === null) {
+      animFrameId = requestAnimationFrame(animate);
+    }
+  });
 
   // Dual-Tone Color Palette (Warm Terracotta/Amber Embers + High-Contrast Slate)
   const PALETTE = [
@@ -123,8 +141,7 @@ function initParticleCanvas() {
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = this.color;
       ctx.globalAlpha = Math.max(0.1, this.alpha);
-      ctx.shadowColor = this.glow;
-      ctx.shadowBlur = 8;
+      // Removed shadowBlur on particles — expensive GPU overdraw
       ctx.fill();
       ctx.restore();
     }
@@ -165,17 +182,15 @@ function initParticleCanvas() {
   function createParticles() {
     particles = [];
     sparks = [];
-    const isMobile = width <= 768;
-    const count = isMobile ? 32 : Math.floor((width * height) / 14000);
-    const particleCount = isMobile ? 32 : Math.min(Math.max(count, 45), 85);
+    const count = Math.floor((width * height) / 14000);
+    const particleCount = Math.min(Math.max(count, 45), 75);
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
   }
 
   function connectLines() {
-    const isMobile = width <= 768;
-    const maxDist = isMobile ? 100 : 135;
+    const maxDist = 130;
 
     for (let a = 0; a < particles.length; a++) {
       for (let b = a + 1; b < particles.length; b++) {
@@ -212,16 +227,18 @@ function initParticleCanvas() {
   }
 
   function animate() {
+    if (!isPageVisible) {
+      animFrameId = null;
+      return;
+    }
     ctx.clearRect(0, 0, width, height);
 
-    // Draw and connect plexus particles
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
     }
     connectLines();
 
-    // Update and draw traveling energy sparks
     for (let i = sparks.length - 1; i >= 0; i--) {
       if (sparks[i].update()) {
         sparks[i].draw();
@@ -230,7 +247,7 @@ function initParticleCanvas() {
       }
     }
 
-    requestAnimationFrame(animate);
+    animFrameId = requestAnimationFrame(animate);
   }
 
   resize();
