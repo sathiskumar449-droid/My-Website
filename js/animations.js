@@ -4,256 +4,11 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initParticleCanvas();
   initCursorGlow();
   initCard3DTilt();
   initScrollReveal();
   initStatCounters();
 });
-
-/* --------------------------------------------------------------------------
-   3D Neural Plexus & Traveling Energy Sparks Particle Canvas
-   -------------------------------------------------------------------------- */
-function initParticleCanvas() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-
-  // Skip heavy canvas animation entirely on mobile & tablet — prevents frame drops
-  const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 992 || ('ontouchstart' in window);
-  if (isMobileDevice) {
-    canvas.style.display = 'none';
-    return;
-  }
-
-  const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
-  let width, height, dpr;
-  let particles = [];
-  let sparks = [];
-  let mouse = { x: null, y: null, radius: 180, isHovering: false };
-  let animFrameId = null;
-  let isPageVisible = true;
-
-  // Pause canvas when tab is hidden (save battery & CPU)
-  document.addEventListener('visibilitychange', () => {
-    isPageVisible = !document.hidden;
-    if (isPageVisible && animFrameId === null) {
-      animFrameId = requestAnimationFrame(animate);
-    }
-  });
-
-  // Dual-Tone Color Palette (Warm Terracotta/Amber Embers + High-Contrast Slate)
-  const PALETTE = [
-    { color: '#E05338', glow: 'rgba(224, 83, 56, 0.65)', weight: 3 },
-    { color: '#FF7A59', glow: 'rgba(255, 122, 89, 0.7)', weight: 3 },
-    { color: '#FF9A3C', glow: 'rgba(255, 154, 60, 0.75)', weight: 3 },
-    { color: '#FFD166', glow: 'rgba(255, 209, 102, 0.8)', weight: 3 },
-    { color: '#FFFFFF', glow: 'rgba(255, 255, 255, 0.85)', weight: 2.5 },
-    { color: '#1E293B', glow: 'rgba(30, 41, 59, 0.4)', weight: 2 }
-  ];
-
-  function getRandomPalette() {
-    const totalWeight = PALETTE.reduce((sum, p) => sum + p.weight, 0);
-    let rand = Math.random() * totalWeight;
-    for (const p of PALETTE) {
-      if (rand < p.weight) return p;
-      rand -= p.weight;
-    }
-    return PALETTE[0];
-  }
-
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-    ctx.scale(dpr, dpr);
-  }
-
-  window.addEventListener('resize', () => {
-    resize();
-    createParticles();
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    mouse.isHovering = true;
-  });
-
-  window.addEventListener('mouseleave', () => {
-    mouse.x = null;
-    mouse.y = null;
-    mouse.isHovering = false;
-  });
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.size = Math.random() * 2.2 + 1.0;
-      this.speedX = (Math.random() - 0.5) * 0.45;
-      this.speedY = (Math.random() - 0.5) * 0.45;
-      
-      const p = getRandomPalette();
-      this.color = p.color;
-      this.glow = p.glow;
-      this.alpha = Math.random() * 0.6 + 0.3;
-      this.baseAlpha = this.alpha;
-      this.pulseSpeed = Math.random() * 0.02 + 0.01;
-      this.pulseAngle = Math.random() * Math.PI * 2;
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      if (this.x > width) this.x = 0;
-      else if (this.x < 0) this.x = width;
-
-      if (this.y > height) this.y = 0;
-      else if (this.y < 0) this.y = height;
-
-      this.pulseAngle += this.pulseSpeed;
-      this.alpha = this.baseAlpha + Math.sin(this.pulseAngle) * 0.15;
-
-      // Smooth mouse interaction
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
-          const force = (mouse.radius - dist) / mouse.radius;
-          const dirX = dx / dist;
-          const dirY = dy / dist;
-          this.x -= dirX * force * 2.8;
-          this.y -= dirY * force * 2.8;
-          this.alpha = Math.min(this.alpha + 0.35, 1.0);
-        }
-      }
-    }
-
-    draw() {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.globalAlpha = Math.max(0.1, this.alpha);
-      // Removed shadowBlur on particles — expensive GPU overdraw
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  // Traveling energetic spark/pulse along constellation lines
-  class EnergyPulse {
-    constructor(p1, p2) {
-      this.p1 = p1;
-      this.p2 = p2;
-      this.progress = 0;
-      this.speed = Math.random() * 0.025 + 0.015;
-      this.size = Math.random() * 2.5 + 1.5;
-      this.color = Math.random() > 0.5 ? '#FFD166' : '#FF7A59';
-    }
-
-    update() {
-      this.progress += this.speed;
-      return this.progress < 1;
-    }
-
-    draw() {
-      const curX = this.p1.x + (this.p2.x - this.p1.x) * this.progress;
-      const curY = this.p1.y + (this.p2.y - this.p1.y) * this.progress;
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(curX, curY, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.shadowColor = '#FFD166';
-      ctx.shadowBlur = 12;
-      ctx.globalAlpha = (1 - Math.abs(this.progress - 0.5) * 2) * 0.85;
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  function createParticles() {
-    particles = [];
-    sparks = [];
-    const count = Math.floor((width * height) / 14000);
-    const particleCount = Math.min(Math.max(count, 45), 75);
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-  }
-
-  function connectLines() {
-    const maxDist = 130;
-
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a + 1; b < particles.length; b++) {
-        const dx = particles[a].x - particles[b].x;
-        const dy = particles[a].y - particles[b].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < maxDist) {
-          const normDist = dist / maxDist;
-          const lineAlpha = (1 - normDist) * 0.24;
-
-          ctx.save();
-          ctx.beginPath();
-          if (dist < maxDist * 0.45) {
-            ctx.strokeStyle = 'rgba(255, 154, 60, 0.45)';
-            ctx.lineWidth = 1.0;
-          } else {
-            ctx.strokeStyle = 'rgba(224, 83, 56, 0.22)';
-            ctx.lineWidth = 0.75;
-          }
-          ctx.globalAlpha = lineAlpha;
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-          ctx.restore();
-
-          // Spawn occasional traveling energy spark between connected nodes
-          if (Math.random() < 0.0008 && sparks.length < 8) {
-            sparks.push(new EnergyPulse(particles[a], particles[b]));
-          }
-        }
-      }
-    }
-  }
-
-  function animate() {
-    if (!isPageVisible) {
-      animFrameId = null;
-      return;
-    }
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
-      particles[i].draw();
-    }
-    connectLines();
-
-    for (let i = sparks.length - 1; i >= 0; i--) {
-      if (sparks[i].update()) {
-        sparks[i].draw();
-      } else {
-        sparks.splice(i, 1);
-      }
-    }
-
-    animFrameId = requestAnimationFrame(animate);
-  }
-
-  resize();
-  createParticles();
-  animate();
-}
 
 /* --------------------------------------------------------------------------
    Custom Interactive Cursor Glow (Lagged Spring Physics)
@@ -330,7 +85,7 @@ function initScrollReveal() {
       '.section-header, .pillars-grid, .services-grid, .why-us-grid, ' +
       '.cta-banner-glass, .page-hero-header, .interactive-card, ' +
       '.about-intro-box, .sim-category-nav, .sim-view-panel, ' +
-      '.service-card, .tilt-card, .pillar-card, .why-choose-row-card'
+      '.service-card, .tilt-card, .pillar-card, .why-choose-row-card, .selected-build-card'
     ).forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
@@ -343,6 +98,7 @@ function initScrollReveal() {
     '.pillars-grid',
     '.services-grid',
     '.testimonials-grid',
+    '.selected-builds-grid',
     '.why-us-grid',
     '.cta-banner-glass',
     '.page-hero-header',
