@@ -124,8 +124,8 @@
   gap: 8px;
   padding: 8px 20px;
   background: rgba(255, 255, 255, 0.72) !important;
-  backdrop-filter: blur(20px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
@@ -153,15 +153,16 @@
 
 .section-subtitle {
   font-size: clamp(1rem, 1.4vw, 1.125rem);
-  color: #0F172A !important;
+  color: #1A1410 !important;
   line-height: 1.7;
   font-weight: 600;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #E05338 0%, #C84323 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--terracotta-primary);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
 }
 
 /* --------------------------------------------------------------------------
@@ -199,8 +200,8 @@
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 4px 12px rgba(0, 0, 0, 0.04) !important;
@@ -275,8 +276,8 @@
   align-items: center;
   transition: all var(--transition-normal);
   background: rgba(255, 238, 230, 0.45) !important;
-  backdrop-filter: blur(32px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border-bottom: 1px solid rgba(224, 83, 56, 0.22) !important;
   box-shadow: inset 0 -1px 0 0 rgba(224, 83, 56, 0.08), 0 8px 25px rgba(224, 83, 56, 0.06) !important;
 }
@@ -302,7 +303,7 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #0F172A;
+  color: #1A1410;
 }
 
 .brand-text-block {
@@ -315,7 +316,7 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.15rem;
-  color: #0F172A;
+  color: #1A1410;
   letter-spacing: -0.02em;
 }
 
@@ -356,8 +357,8 @@
 @media (min-width: 769px) {
   .nav-menu {
     background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.95);
     border-radius: var(--radius-full);
     padding: 4px 6px;
@@ -401,7 +402,7 @@
   display: none;
   background: none;
   border: none;
-  color: #0F172A;
+  color: #1A1410;
   cursor: pointer;
   padding: 6px;
 }
@@ -446,8 +447,8 @@
   max-height: calc(100vh - 100px);
   overflow-y: auto;
   background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 18px;
   padding: 12px 10px;
@@ -559,7 +560,7 @@
 .dropdown-item-title {
   font-size: 13px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1A1410;
   line-height: 1.25;
   margin-bottom: 2px;
   transition: color 0.15s ease;
@@ -637,8 +638,8 @@
   gap: 8px;
   padding: 8px 18px;
   background: rgba(255, 255, 255, 0.72) !important;
-  backdrop-filter: blur(20px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
@@ -698,9 +699,9 @@
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--terracotta-primary);
-  background: linear-gradient(135deg, #E05338 0%, #F97316 50%, #EA580C 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
   display: inline-block;
   max-width: 100%;
   text-align: center;
@@ -842,8 +843,8 @@
 
 .pillar-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 34px 28px;
@@ -892,8 +893,8 @@
 
 .what-we-build-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 30px 24px;
@@ -973,8 +974,8 @@
 
 .service-detail-card {
   background: rgba(255, 255, 255, 0.58) !important;
-  backdrop-filter: blur(32px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.88) !important;
   border-radius: var(--radius-xl);
   padding: 38px 32px;
@@ -1031,10 +1032,10 @@
   gap: 10px;
   font-size: 13.5px;
   font-weight: 600;
-  color: #0F172A;
+  color: #1A1410;
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   box-shadow: inset 0 1px 1px #FFFFFF, 0 2px 8px rgba(0, 0, 0, 0.02);
@@ -1161,8 +1162,8 @@
   gap: 24px;
   padding: 18px 26px;
   background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: var(--radius-lg);
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 16px rgba(15, 23, 42, 0.03) !important;
@@ -1288,8 +1289,8 @@
 
 .showcase-glass-card {
   background: rgba(255, 255, 255, 0.52) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-xl);
   padding: 28px;
@@ -1335,7 +1336,7 @@
   align-items: center;
   font-size: 12px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1A1410;
   margin-bottom: 4px;
 }
 
@@ -1381,14 +1382,14 @@
 
 .mini-wa-bubble.bot {
   background: #FFFFFF;
-  color: #0F172A;
+  color: #1A1410;
   border: 1px solid rgba(226, 232, 240, 0.9);
   align-self: flex-start;
 }
 
 .mini-wa-bubble.user {
   background: #DCF8C6;
-  color: #0F172A;
+  color: #1A1410;
   align-self: flex-end;
   text-align: right;
 }
@@ -1402,7 +1403,7 @@
   border-radius: 10px;
   font-size: 12.5px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1A1410;
   border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
@@ -1481,8 +1482,8 @@
 
 .service-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 34px 30px;
@@ -1548,15 +1549,15 @@
 
 .service-features-list li {
   font-size: var(--text-xs);
-  color: #0F172A !important;
+  color: #1A1410 !important;
   display: flex;
   align-items: center;
   gap: 12px;
   font-weight: 600;
   padding: 12px 14px;
   background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.98) !important;
   border-radius: 14px;
   box-shadow: inset 0 1px 1px #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.02);
@@ -1604,8 +1605,8 @@
    -------------------------------------------------------------------------- */
 .simulator-wrapper {
   background: rgba(255, 255, 255, 0.46) !important;
-  backdrop-filter: blur(32px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.75) !important;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -1620,8 +1621,8 @@
   justify-content: space-between;
   padding: 16px 20px;
   background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   flex-wrap: wrap;
   gap: 12px;
@@ -1641,7 +1642,7 @@
 .sim-active-title {
   font-size: 15px;
   font-weight: 800;
-  color: #0F172A;
+  color: #1A1410;
   letter-spacing: -0.01em;
 }
 
@@ -1733,7 +1734,7 @@
 
 .pos-cat-btn {
   background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   color: #334155;
   padding: 8px 18px;
@@ -1806,7 +1807,7 @@
 .pos-item-name {
   font-size: 12px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1A1410;
   line-height: 1.25;
 }
 
@@ -1819,7 +1820,7 @@
 
 .pos-cart-panel {
   background: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(20px) !important;
+  backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: 20px;
   padding: 20px;
@@ -1853,11 +1854,11 @@
   justify-content: space-between;
   padding: 10px 12px;
   background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.98) !important;
   border-radius: 12px;
   font-size: var(--text-xs);
-  color: #0F172A;
+  color: #1A1410;
   box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
@@ -1921,7 +1922,7 @@
 
 .kanban-col {
   background: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(16px) !important;
+  backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-md);
   padding: 16px;
@@ -1941,7 +1942,7 @@
 
 .kanban-card {
   background: rgba(255, 255, 255, 0.82) !important;
-  backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: var(--radius-sm);
   padding: 12px;
@@ -2231,8 +2232,8 @@
    -------------------------------------------------------------------------- */
 .testimonial-card {
   background: rgba(255, 255, 255, 0.94) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid #FFFFFF !important;
   border-radius: var(--radius-xl);
   padding: 32px 28px;
@@ -2261,15 +2262,15 @@
 
 .testimonial-quote {
   font-size: 14px;
-  color: #0F172A !important;
+  color: #1A1410 !important;
   font-weight: 600;
   line-height: 1.7;
   margin-bottom: 20px;
   font-style: italic;
   padding: 16px 18px;
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: 16px;
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -2297,7 +2298,7 @@
 
 .client-info h4 {
   font-size: 14px;
-  color: #0F172A !important;
+  color: #1A1410 !important;
   margin-bottom: 2px;
   font-weight: 800;
 }
@@ -2320,8 +2321,8 @@
 
 .contact-info-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 34px 28px;
@@ -2337,8 +2338,8 @@
   gap: 16px;
   padding: 14px 16px;
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: 16px;
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -2377,8 +2378,8 @@
 
 .contact-form-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 34px 28px;
@@ -2406,8 +2407,8 @@
 
 .form-control {
   background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(226, 232, 240, 0.95) !important;
   border-radius: var(--radius-md);
   padding: 14px 16px;
@@ -2455,8 +2456,8 @@ textarea.form-control {
    -------------------------------------------------------------------------- */
 .trust-metrics-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.78) !important;
   border-radius: var(--radius-xl);
   padding: 28px 32px;
@@ -2470,8 +2471,8 @@ textarea.form-control {
 .trust-metric-pill {
   padding: 18px 14px;
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: var(--radius-lg);
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.02);
@@ -2497,8 +2498,8 @@ textarea.form-control {
    -------------------------------------------------------------------------- */
 .value-strip-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.78) !important;
   border-radius: var(--radius-xl);
   padding: 24px 28px;
@@ -2511,8 +2512,8 @@ textarea.form-control {
 .value-strip-item {
   padding: 22px 22px;
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.95) !important;
   border-radius: var(--radius-lg);
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.02);
@@ -2573,12 +2574,12 @@ textarea.form-control {
    -------------------------------------------------------------------------- */
 .cta-banner-glass {
   background: rgba(255, 255, 255, 0.58) !important;
-  backdrop-filter: blur(32px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-xl);
   padding: 48px 36px;
-  color: #0F172A;
+  color: #1A1410;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -2589,7 +2590,7 @@ textarea.form-control {
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 800;
   margin-bottom: 14px;
-  color: #0F172A !important;
+  color: #1A1410 !important;
 }
 
 .cta-desc {
@@ -2686,9 +2687,9 @@ textarea.form-control {
    -------------------------------------------------------------------------- */
 .footer {
   background: rgba(255, 238, 230, 0.6) !important;
-  backdrop-filter: blur(36px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(210%) !important;
-  color: #0F172A;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
+  color: #1A1410;
   padding: 36px 0 20px 0;
   position: relative;
   z-index: 2;
@@ -2707,8 +2708,8 @@ textarea.form-control {
 
 .footer-card-box {
   background: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-md);
   padding: 22px 18px;
@@ -2725,7 +2726,7 @@ textarea.form-control {
 }
 
 .footer .brand-logo {
-  color: #0F172A;
+  color: #1A1410;
   margin-bottom: 8px;
 }
 
@@ -2734,7 +2735,7 @@ textarea.form-control {
 }
 
 .footer-brand-info p {
-  color: #0F172A !important;
+  color: #1A1410 !important;
   font-weight: 600;
   font-size: 13px;
   margin-top: 6px;
@@ -2759,7 +2760,7 @@ textarea.form-control {
 }
 
 .footer-links a {
-  color: #0F172A !important;
+  color: #1A1410 !important;
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 700;
@@ -2793,8 +2794,8 @@ textarea.form-control {
   width: 100vw;
   height: 100vh;
   background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -2850,7 +2851,7 @@ textarea.form-control {
 
 .invoice-close-btn:hover {
   background: #E2E8F0;
-  color: #0F172A;
+  color: #1A1410;
 }
 
 .invoice-header-print {
@@ -3028,8 +3029,8 @@ textarea.form-control {
 
 .industry-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 34px 30px;
@@ -3154,8 +3155,8 @@ textarea.form-control {
   margin: 50px auto 0 auto;
   max-width: 760px;
   background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-full);
   box-shadow: inset 0 1px 1px #FFFFFF, 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -3189,8 +3190,8 @@ textarea.form-control {
 
 .selected-build-card {
   background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
   border: 1px solid rgba(255, 255, 255, 0.82) !important;
   border-radius: var(--radius-xl);
   padding: 32px 30px;
