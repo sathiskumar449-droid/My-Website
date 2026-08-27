@@ -190,7 +190,7 @@ function sendQuoteToWhatsApp() {
     `_Hello VANQUR Team, I would like to discuss this project requirements and get started._`;
 
   // Default contact phone number (customizable by client)
-  const phone = '919876543210'; 
+  const phone = '919942305574'; 
   const url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
 
   window.open(url, '_blank');

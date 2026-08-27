@@ -832,6 +832,7 @@
 .app-icon-rose { background: var(--app-icon-rose); }
 .app-icon-cyan { background: var(--app-icon-cyan); }
 .app-icon-green { background: var(--app-icon-green); }
+.app-icon-indigo { background: var(--app-icon-indigo); }
 
 .pillars-grid {
   display: grid;

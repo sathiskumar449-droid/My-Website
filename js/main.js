@@ -712,7 +712,7 @@ function initContactForm() {
       text += `📝 *Requirements:* ${message}\n`;
     }
 
-    const waUrl = `https://api.whatsapp.com/send?phone=919876543210&text=${encodeURIComponent(text)}`;
+    const waUrl = `https://api.whatsapp.com/send?phone=919942305574&text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
   });
 }

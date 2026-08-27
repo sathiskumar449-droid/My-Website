@@ -63,6 +63,8 @@
   --app-icon-cyan-glow: rgba(6, 182, 212, 0.35);
   --app-icon-green: linear-gradient(135deg, #22C55E 0%, #15803D 100%);
   --app-icon-green-glow: rgba(34, 197, 94, 0.35);
+  --app-icon-indigo: linear-gradient(135deg, #6366F1 0%, #4338CA 100%);
+  --app-icon-indigo-glow: rgba(99, 102, 241, 0.35);
 
   /* Primary Gradients */
   --grad-primary: linear-gradient(135deg, #E05338 0%, #C84323 100%);
